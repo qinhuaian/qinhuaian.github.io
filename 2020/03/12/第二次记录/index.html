@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>随缘随喜</title>
+  <title>第二次记录 - 随缘随喜</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -121,12 +121,35 @@
             </span>
 
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Thursday, March 12th 2020, 6:31 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    504 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分钟
+                  </span>
+                
+
+                
+              </p>
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
-            </div>
           
         </div>
       </div>
@@ -135,110 +158,52 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <p>  做了一天多终于搞出来了，有点沮丧，自己需要学的有好多好多好多好多啊。<br>  讲讲题目的思路吧，题目要求快速计算出一串式子的结果。提示说思考服务器怎样知道获得算式和提交答案的是一个人，然而我还是没啥思路，好吧，起码大方向给了。就看了提示里的Python requests库，又查了查相关资料，发现直接使用requests调用请求方法发送请求，每次都会创建一个新session（会话对象），没有之前请求的cookies信息。直接创建一个session对象来发请求，那么每次发请求用的都是这个会话对象，所有能够保存之前的会话信息（cookies数据），就能够保证获得算式和提交答案的都是一个人了。session其实是一个会话类，requests的所有请求方法，底层都是调用的这个类的对象。看来是要用python来写啊，这样就有初步的解决思路了。<br>  但是咋计算那串式子呢？首先肯定得从所有的字符串中提取出来，那就用正则表达式匹配试试吧，尴尬的是我正则表达式忘得差不多了，只能再查资料学习了。一开始写的表达式一直匹配的不对，看了看应该是空格匹配有些不太对，怎么整也没整好，就偷懒把所有空格都替换了，so sad。好不容易把式子结果算出来，此时的我犯了一个很蠢的错误，想用post请求来提交数据（想当然的脑回路不要有啊），一直不对。纠结了好久终于想起来再去看看网页源代码，扫了一眼，顿时虎躯一震，想捶死自己的心都有了，原来是要用get请求啊！遂又去改代码，最后终于整出来了。</p>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">第二次记录</p>
-      </a>
-
-      <a href="/2020/03/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">  做了一天多终于搞出来了，有点沮丧，自己需要学的有好多好多好多好多啊。  讲讲题目的思路吧，题目要求快速计算出一串式子的结果。提示说思考服务器怎样知道获得算式和提交答案的是一个人，然而我还是没啥思路，好吧，起码大方向给了。就看了提示里的Python requests库，又查了查相关资料，发现直接使用requests调用请求方法发送请求，每次都会创建一个新session（会话对象），没有之前请求的cookies信息。直接创建一个session对象来发请求，那么每次发请求用的都是这个会话对象，所有能够保存之前的会话信息（cookies数据），就能够保证获得算式和提交答案的都是一个人了。sessi</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-12&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/11/%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">第一次记录</p>
-      </a>
-
-      <a href="/2020/03/11/%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">@TOC
-第一次记录最简单的白给题-simple HTTP method，测试的get和post的用法。第一个是关于get的题目，就我而言第一眼看到是懵逼的，以前完全没接触过这种骨骼清奇的题目。看了看网页的源代码，意识到这可能和get变量用法有关，只要想办法把key值设置成areyousure应该就行了。于是就去查相关用法。查了之后发现get传输的变量直接显示在URL之中，所以直接在网址后面加上？key=areyousure就可以了。?代表URL的结尾与请求参数的开始。另一个是关于Post的题目，但是用post方法的表单发送的信息，对任何人都是不可见的，自然也不会直接显示在URL中。害，这可咋</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-11&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
-        <p class="h4 index-header">我的第一篇博客</p>
-      </a>
-
-      <a href="/2020/03/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1"></div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-09&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-              </div>
             </div>
+            <hr>
+            <div>
+              <p>
+                
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
+
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -303,6 +268,57 @@
 
 
 
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
 
 
 
@@ -329,7 +345,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "坐看云起时&nbsp;",
+        "第二次记录&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
