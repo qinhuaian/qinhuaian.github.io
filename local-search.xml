@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>第三次记录</title>
+    <link href="/2020/03/14/%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/03/14/%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.对session对象的应用，以保证会话信息的一致性。<br>2.如何正确解析和提取HTML／XML数据<br>3.base64正确解码方式<br>4.对SVG图像的处理 </p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.创建一个session对象来发请求，那么每次发请求用的都是这个会话对象，能够保存之前的会话信息，以保证会话信息的一致性。<br>2.BeautifulSoup支持Python标准库中的HTML解析器，借助它可以实现对html/xml语言的解析与提取，本题使用方法为BeautifulSoup(markup,”html.parser”)。具体标签内容的提取方法可参照 <a href="http://www.jsphp.net/python/show-24-214-1.html" target="_blank" rel="noopener">http://www.jsphp.net/python/show-24-214-1.html</a><br>3.SVG为可缩放矢量图形，并使用XML格式来定义图像。<text>元素用于定义文本，其中x决定此文本在横轴的位置，y决定纵轴的位置。具体介绍可见<a href="https://www.runoob.com/svg/svg-text.html" target="_blank" rel="noopener">https://www.runoob.com/svg/svg-text.html</a> </p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.首先查看网页源代码，观察到data:image/svg+xml;base64的字眼。<br>2.对img标签内描述图像的内容进行提取，并利用Base64解码。<br>3.解码得到svg描述的原图像，为了得到按图片从左到右顺序排序的字母序列，利用x的大小对标签内容进行排序。<br>4.得到验证码内容，利用get请求提交。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第二次记录 </title>
     <link href="/2020/03/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AE%B0%E5%BD%95%20/"/>
     <url>/2020/03/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AE%B0%E5%BD%95%20/</url>
