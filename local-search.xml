@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>第四次记录</title>
+    <link href="/2020/03/16/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/03/16/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>Sql手工注入   </p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.注入点寻找<br>2.判断字段长度<br>3.判断字段位置<br>4.查询数据库名、表名、表中的字段和字段信息 </p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>以下解题步骤主要参考了这两篇文章<a href="https://www.cnblogs.com/conquer-vv/p/11307682.html" target="_blank" rel="noopener">https://www.cnblogs.com/conquer-vv/p/11307682.html</a><br><a href="https://blog.csdn.net/qq_39353923/article/details/82901903" target="_blank" rel="noopener">https://blog.csdn.net/qq_39353923/article/details/82901903</a><br>说实话，我做这个题就是照着上面文章来的，搜sql手工注入结果找到了一个差不多的题，做出来这个题很是胜之不武，也没啥成就感。具体步骤如下：<br>1.找注入点，判断是否存在注入点常用套路是输入语句’、and 1=1或and 1=2,来判断网站是否存在注入点。尝试在正常数据后加上单引号，发现数据为空，加上注释符(注释符:#,–+ , //, – )后发现依旧可以正常输出,那么可以判断存在注入点。<br>2.用order by 来判断字段长度。<br>3.使用union或者union all将SQL语句联合起来判断字段位置，并可以查询数据库名、表名、表中的字段和字段信息。最终在字段信息中找到flag</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第三次记录</title>
     <link href="/2020/03/14/%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
     <url>/2020/03/14/%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
