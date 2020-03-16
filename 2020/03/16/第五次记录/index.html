@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Archives - 随缘随喜</title>
+  <title>第五次记录 - 随缘随喜</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -121,6 +121,33 @@
             </span>
 
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Monday, March 16th 2020, 7:07 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    345 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分钟
+                  </span>
+                
+
+                
+              </p>
+            
           </div>
 
           
@@ -131,67 +158,54 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">6 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/16/%E7%AC%AC%E4%BA%94%E6%AC%A1%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第五次记录</span>
-      <span style="float: right;">03-16</span>
-    </a>
-  
-    
-    <a href="/2020/03/16/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第四次记录</span>
-      <span style="float: right;">03-16</span>
-    </a>
-  
-    
-    <a href="/2020/03/14/%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第三次记录</span>
-      <span style="float: right;">03-14</span>
-    </a>
-  
-    
-    <a href="/2020/03/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AE%B0%E5%BD%95%20/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第二次记录 </span>
-      <span style="float: right;">03-12</span>
-    </a>
-  
-    
-    <a href="/2020/03/11/%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第一次记录</span>
-      <span style="float: right;">03-11</span>
-    </a>
-  
-    
-    <a href="/2020/03/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">我的第一篇博客</span>
-      <span style="float: right;">03-09</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.php类型比较<br>2.如何做到变量原值不同但利用md5或sha1编码后结果相同</p>
+<h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.php变量比较包含松散比较和严格比较。其中，松散比较指使用两个等号比较，只比较值，不比较类型。严格比较指用三个等号比较，除了比较值，也比较类型。详情可见<a href="https://www.runoob.com/php/php-types-comparisons.html" target="_blank" rel="noopener">添加链接描述</a><br>2.php中sha1()函数计算字符串的SHA-1散列，md5()函数则计算字符串的MD5散列。<br>3.经过MD5运算后结果为0的字符串，编码后需保证0e<strong>**</strong>的形式，换成数字意思为0乘10的n次方，故结果为0。例如240610708 和 QNKCDZO均符合，实际上符合的字符串很多，就不一一赘述了。<br>4.保证变量不同但SHA-1编码后相同，利用数组绕过的方法。因为md5和sha1对一个数组进行加密都将返回NULL，而NULL===NULL返回true。还有一些php黑魔法可见以下链接：<br><a href="https://blog.csdn.net/nzjdsds/article/details/82019297" target="_blank" rel="noopener">添加链接描述</a><br><a href="https://blog.csdn.net/weixin_30539835/article/details/99669583" target="_blank" rel="noopener">添加链接描述</a><br><a href="https://www.cnblogs.com/xishaonian/p/7628152.html" target="_blank" rel="noopener">添加链接描述</a></p>
+<h2 id="做题步骤"><a href="#做题步骤" class="headerlink" title="做题步骤"></a>做题步骤</h2><p>1.观察所给代码，使用get请求。并且只要同时满足<code>md5($test)==‘0’</code><br><code>sha1($_GET[[‘name’])===sha1($_GET[‘password’])</code><br>以上两个条件即可。<br>2.在url后部添加<code>test=240610708&amp;name[]=1&amp;password[]=2</code>,可得到flag信息。</p>
 
-
-              </div>
             </div>
+            <hr>
+            <div>
+              <p>
+                
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
+
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -256,6 +270,57 @@
 
 
 
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
 
 
 
@@ -282,7 +347,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "第五次记录&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

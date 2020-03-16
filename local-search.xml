@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>第五次记录</title>
+    <link href="/2020/03/16/%E7%AC%AC%E4%BA%94%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/03/16/%E7%AC%AC%E4%BA%94%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.php类型比较<br>2.如何做到变量原值不同但利用md5或sha1编码后结果相同</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.php变量比较包含松散比较和严格比较。其中，松散比较指使用两个等号比较，只比较值，不比较类型。严格比较指用三个等号比较，除了比较值，也比较类型。详情可见<a href="https://www.runoob.com/php/php-types-comparisons.html" target="_blank" rel="noopener">添加链接描述</a><br>2.php中sha1()函数计算字符串的SHA-1散列，md5()函数则计算字符串的MD5散列。<br>3.经过MD5运算后结果为0的字符串，编码后需保证0e<strong>**</strong>的形式，换成数字意思为0乘10的n次方，故结果为0。例如240610708 和 QNKCDZO均符合，实际上符合的字符串很多，就不一一赘述了。<br>4.保证变量不同但SHA-1编码后相同，利用数组绕过的方法。因为md5和sha1对一个数组进行加密都将返回NULL，而NULL===NULL返回true。还有一些php黑魔法可见以下链接：<br><a href="https://blog.csdn.net/nzjdsds/article/details/82019297" target="_blank" rel="noopener">添加链接描述</a><br><a href="https://blog.csdn.net/weixin_30539835/article/details/99669583" target="_blank" rel="noopener">添加链接描述</a><br><a href="https://www.cnblogs.com/xishaonian/p/7628152.html" target="_blank" rel="noopener">添加链接描述</a></p><h2 id="做题步骤"><a href="#做题步骤" class="headerlink" title="做题步骤"></a>做题步骤</h2><p>1.观察所给代码，使用get请求。并且只要同时满足<code>md5($test)==‘0’</code><br><code>sha1($_GET[[‘name’])===sha1($_GET[‘password’])</code><br>以上两个条件即可。<br>2.在url后部添加<code>test=240610708&amp;name[]=1&amp;password[]=2</code>,可得到flag信息。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第四次记录</title>
     <link href="/2020/03/16/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
     <url>/2020/03/16/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
