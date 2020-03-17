@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>第六次记录</title>
+    <link href="/2020/03/17/%E7%AC%AC%E5%85%AD%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/03/17/%E7%AC%AC%E5%85%AD%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.php中stripos()函数、file_put_contents()函数应用<br>2.数组绕过方法</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.PHP中stripos()函数用来查找字符串在另一字符串中第一次出现的位置，并不区分大小写。返回值为字符串第一次出现的位置，如果没有找到字符串返回false。详细介绍可见<a href="https://www.w3school.com.cn/php/func_string_stripos.asp" target="_blank" rel="noopener">stripos函数</a><br>2.file_put_contents()函数可用来把字符串、数组或者数据流写入文件中，返回值为写入到文件内数据的字节数。如果写入的是数组，会利用<code>join(‘’,$array)</code>转化为字符串。详细介绍可见<a href="https://www.w3school.com.cn/php/func_filesystem_file_put_contents.asp" target="_blank" rel="noopener">file_put_contents函数</a></p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.在初始界面随便输入一串数，进入一个新的界面。上面的php代码要求以get请求提交的content字符串中不应该包括’php’或者’&lt;’，如果满足了这个条件就会将content内容存到filename中。<br>2.输入满足条件的字符串，config.php页面中只会出现所输的内容。猜测需要在filename中存入’php’或者’&lt;’。遂尝试使用数组绕过的方法，在url后面添加<code>content[]=’php’</code>或者<code>content[]=’&lt;’</code>。此时config.php页面中出现flag。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第五次记录 </title>
     <link href="/2020/03/17/%E7%AC%AC%E4%BA%94%E6%AC%A1%E8%AE%B0%E5%BD%95%20/"/>
     <url>/2020/03/17/%E7%AC%AC%E4%BA%94%E6%AC%A1%E8%AE%B0%E5%BD%95%20/</url>
