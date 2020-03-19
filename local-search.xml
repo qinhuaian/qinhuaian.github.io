@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>第八次记录</title>
+    <link href="/2020/03/19/%E7%AC%AC%E5%85%AB%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/03/19/%E7%AC%AC%E5%85%AB%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.php文件包含漏洞<br>2.使用php://filter绕过限制</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.php文件包含漏洞指服务器通过php的特性去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，导致执行了非预期的代码，从而产生安全漏洞。文件包含漏洞的一般特征如下：<br>?page=a.php<br>?home=a.html<br>?file=content<br>具体可见：<br><a href="https://blog.csdn.net/SKI_12/article/details/60882602?fps=1&locationNum=2" target="_blank" rel="noopener">php文件包含漏洞</a><br><a href="https://www.jianshu.com/p/3dc97deec491" target="_blank" rel="noopener">文件包含漏洞的几种利用方法</a><br><a href="https://blog.csdn.net/xysoul/article/details/46689049" target="_blank" rel="noopener">文件包含漏洞详解</a><br>2.使用php封装协议读取文件，一般可以使用两种方式：</p><pre><code class="python">?page=php://filter/read=convert.base64-encode/resource=index.php</code></pre><pre><code class="python">?page=../../../../../../etc/passwd</code></pre><p>3.php://filter是php中特有的一个协议，可以作为一个中间流来处理其他流，可以进行任意文件的读取。其中，resource参数指定了要过滤的数据流，read或者write参数都可以设定一个或多个过滤器，以符号|分隔。其主要应用包括利用base64获得源码或者通过读写编码实行绕过操作等，本题就是利用它将引发冲突的文件流进行编码处理。<br>具体可见：<br><a href="https://blog.csdn.net/wy_97/article/details/77432002" target="_blank" rel="noopener">浅述filter妙用</a></p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.在url后面输入<br><code>?page=php://filter/read=convert.base64-encode/resource=flag</code>，先将可能引发限制的php代码用base64编码，从而绕过限制。<br>2.将页面出现内容进行base64解码，得到flag。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第七次记录</title>
     <link href="/2020/03/18/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
     <url>/2020/03/18/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
