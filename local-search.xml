@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>第九次记录</title>
+    <link href="/2020/03/20/%E7%AC%AC%E4%B9%9D%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/03/20/%E7%AC%AC%E4%B9%9D%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p>装了一天的linux虚拟机，疲于修改各种奇奇怪怪的小bug。现在就有两个感悟：1.删除重装大法好，菜鸡必备。2.你永远不知道之前嫌弃占空间删掉的软件什么时候会再下回来，能留着就留着吧，重新下怪麻烦的。<br>简单说下安装过程吧，我用的virtualbox+ubuntu（用vb其实是因为穷，免费使用它不香吗？)下载地址可见 <a href="https://www.virtualbox.org/" target="_blank" rel="noopener">https://www.virtualbox.org/</a><br>具体安装过程可见：<a href="https://www.jianshu.com/p/e838cd947eff" target="_blank" rel="noopener">https://www.jianshu.com/p/e838cd947eff</a><br>装完后设置共享文件夹可能有点问题，自动挂载行不通的话还是莫要强求了，直接用手动挂载吧。具体方法可见<a href="https://www.jianshu.com/p/39327c9ea368" target="_blank" rel="noopener">https://www.jianshu.com/p/39327c9ea368</a><br>万事大吉后用objdump反汇编了一下bomb，整整齐齐蹦出来的汇编语言直接闪瞎了我的狗眼，明天开始要好好复习一下汇编语言了啊！</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第八次记录</title>
     <link href="/2020/03/19/%E7%AC%AC%E5%85%AB%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
     <url>/2020/03/19/%E7%AC%AC%E5%85%AB%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
