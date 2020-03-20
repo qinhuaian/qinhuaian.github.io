@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>第九次记录 - 随缘随喜</title>
+  <title>第二阶段 -第一次记录 - 随缘随喜</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -124,7 +124,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Friday, March 20th 2020, 7:17 pm
+                  Friday, March 20th 2020, 7:57 pm
                 </p>
               
 
@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    240 字
+                    375 字
                   </span>
                 
 
@@ -169,7 +169,11 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <p>装了一天的linux虚拟机，疲于修改各种奇奇怪怪的小bug。现在就有两个感悟：1.删除重装大法好，菜鸡必备。2.你永远不知道之前嫌弃占空间删掉的软件什么时候会再下回来，能留着就留着吧，重新下怪麻烦的。<br>简单说下安装过程吧，我用的virtualbox+ubuntu（用vb其实是因为穷，免费使用它不香吗？)下载地址可见 <a href="https://www.virtualbox.org/" target="_blank" rel="noopener">https://www.virtualbox.org/</a><br>具体安装过程可见：<a href="https://www.jianshu.com/p/e838cd947eff" target="_blank" rel="noopener">https://www.jianshu.com/p/e838cd947eff</a><br>装完后设置共享文件夹可能有点问题，自动挂载行不通的话还是莫要强求了，直接用手动挂载吧。具体方法可见<a href="https://www.jianshu.com/p/39327c9ea368" target="_blank" rel="noopener">https://www.jianshu.com/p/39327c9ea368</a><br>万事大吉后用objdump反汇编了一下bomb，整整齐齐蹦出来的汇编语言直接闪瞎了我的狗眼，明天开始要好好复习一下汇编语言了啊！</p>
+              <p>装了一天的linux虚拟机，疲于修改各种奇奇怪怪的小bug。现在就有两个感悟：1.删除重装大法好，菜鸡必备。2.你永远不知道之前嫌弃占空间删掉的软件什么时候会再下回来，能留着就留着吧，重新下怪麻烦的。<br>简单说下安装过程吧，我用的virtualbox+ubuntu（用vb其实是因为穷，免费使用它不香吗？)<br>具体安装过程可见：<a href="https://www.jianshu.com/p/e838cd947eff" target="_blank" rel="noopener">虚拟机安装过程</a><br>设置共享文件夹可能会有点问题，自动挂载行不通的话还是莫要强求了，直接用手动挂载吧。具体方法可见<a href="https://www.jianshu.com/p/39327c9ea368" target="_blank" rel="noopener">共享文件夹的几种设置方法</a><br>全都装完后想执行一下bomb，结果？？？一直提醒我没有那个文件或目录。整了好久才知道是因为我的ubuntu是64位的，没有32位的运行库。在终端安装一下运行库就行，具体如下：</p>
+<pre><code class="python">sudo apt-get install ia32-libs</code></pre>
+<p>如果不行，说没有可用的软件包，然而下列软件包会取代它，就输入：</p>
+<pre><code class="python">sudo apt-get install lib32z1</code></pre>
+<p>另外，找到了一篇讲linux执行可执行文件的具体过程，讲的挺好：<a href="https://blog.csdn.net/mazongshan1/article/details/37936971?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">linux可执行文件执行过程</a><br>万事大吉后用objdump反汇编了一下bomb，整整齐齐蹦出来的汇编语言直接闪瞎了我的狗眼，明天开始要好好复习一下汇编语言了啊！</p>
 
             </div>
             <hr>
@@ -345,7 +349,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "第九次记录&nbsp;",
+        "第二阶段 -第一次记录&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
