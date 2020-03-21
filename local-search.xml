@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>拆弹进程记录1-2</title>
+    <link href="/2020/03/21/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%951-2/"/>
+    <url>/2020/03/21/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%951-2/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20200321215122818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第一阶段是将输入的内容和0x804a1c4存的内容相比较，相等则可以通过。<br><img src="https://img-blog.csdnimg.cn/20200321215449529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第二阶段要求输入六个数字，并且输入的第一个数字必须为1。整个程序经历五次循环，将循环变量从1开始相加，或者说做乘2运算（eax+eax），每次循环都要和相应次序输入的数字进行比较，必须保证都相等才能避免爆炸。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第二阶段 -第一次记录</title>
     <link href="/2020/03/20/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%20-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/"/>
     <url>/2020/03/20/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%20-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/</url>
