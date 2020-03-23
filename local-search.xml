@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>拆弹进程记录3-5</title>
+    <link href="/2020/03/23/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%953-5/"/>
+    <url>/2020/03/23/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%953-5/</url>
+    
+    <content type="html"><![CDATA[<h2 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h2><p><img src="https://img-blog.csdnimg.cn/20200323231741610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>跳转查询地址<br><img src="https://img-blog.csdnimg.cn/20200323232331581.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><img src="https://img-blog.csdnimg.cn/20200323231804880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><img src="https://img-blog.csdnimg.cn/2020032323182238.png" srcset="/img/loading.gif" alt=""><br>第三阶段首先找到输入格式是“%d %c %d”，输入的第一个数需要保证在2-7之间，并根据输入的这个数来进行跳转。然后需要保证输入的第三个数字等于0x38b即907，并进一步跳转，判断第二次输入的字符和al寄存器所存是否相等，相等即通关。最后结果是”3 l 907”</p><h2 id="第四阶段"><a href="#第四阶段" class="headerlink" title="第四阶段"></a>第四阶段</h2><p><img src="https://img-blog.csdnimg.cn/20200323232431851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><img src="https://img-blog.csdnimg.cn/20200323232448500.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第四阶段最关键的递归调用程序我还有点迷糊，只看出来了如果第二个数是4，第一个数就是4的倍数，然后试出来的48和4。</p><h2 id="第五阶段"><a href="#第五阶段" class="headerlink" title="第五阶段"></a>第五阶段</h2><p><img src="https://img-blog.csdnimg.cn/20200323232835858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第五阶段就是首先知道输入字符串的长度需要为6，然后进行一个循环，由ax寄存器的值当作循环变量，每次循环依次将输入的单个字符的ascII码的低四位存到cx寄存器中，并把0x804a260+4<em>ecx里存的数值累次加到dx寄存器上。六次循环后判断dx里的值是否为52，如果相等则通关。<br>52=10+10+10+10+10+2，当ecx里的值为0，0x804a260+4</em>ecx即0x804a260里存的是2，当ecx里的值为1时，0x804a264里存的是10，所以就找二进制低四位为0000和0001的字符，找到q和p符合条件。最后结果为qqqqqp</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>拆弹进程记录1-2</title>
     <link href="/2020/03/21/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%951-2/"/>
     <url>/2020/03/21/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%951-2/</url>
