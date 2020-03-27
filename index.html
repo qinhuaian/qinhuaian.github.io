@@ -149,6 +149,34 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        <p class="h4 index-header">MIT6.828 环境搭建</p>
+      </a>
+
+      <a href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">总的来说，需要构建x86仿真器QEMU和一个编译器工具链。具体步骤如下：1.安装linux虚拟机，如果是64位计算机的话先安装32位支持库，输入：sudo apt-get install gcc-multilib2.在终端测试工具链是否可行，首先输入Objdump -i，输出第二行应为elf32-i386。然后输入gcc -m32 -print-libgcc-file-name,如果两个命令都成功，就说明无需再编译工具链，具体如下图所示：)3.下载qemu前，首先安装libsdl1.2-dev，libtool-bin，libglib2.0-dev，libz-dev和libpixman-1-de</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2020/03/23/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%953-5/">
         <p class="h4 index-header">拆弹进程记录3-5</p>
       </a>
@@ -402,34 +430,6 @@
       <div class="index-btm">
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-14&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AE%B0%E5%BD%95%20/">
-        <p class="h4 index-header">第二次记录 </p>
-      </a>
-
-      <a href="/2020/03/12/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AE%B0%E5%BD%95%20/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">做了一天多终于搞出来了，有点沮丧，自己需要学的有好多好多好多好多啊。讲讲题目的思路吧，题目要求快速计算出一串式子的结果。提示说思考服务器怎样知道获得算式和提交答案的是一个人，然而我还是没啥思路，好吧，起码大方向给了。就看了提示里的Python requests库，又查了查相关资料，发现直接使用requests调用请求方法发送请求，每次都会创建一个新session（会话对象），没有之前请求的cookies信息。直接创建一个session对象来发请求，那么每次发请求用的都是这个会话对象，所有能够保存之前的会话信息（cookies数据），就能够保证获得算式和提交答案的都是一个人了。session其实</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-12&nbsp;&nbsp;
         
         
         

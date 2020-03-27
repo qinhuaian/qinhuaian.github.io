@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>MIT6.828 环境搭建</title>
+    <link href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <url>/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<p>总的来说，需要构建x86仿真器QEMU和一个编译器工具链。具体步骤如下：<br>1.安装linux虚拟机，如果是64位计算机的话先安装32位支持库，输入：<br><code>sudo apt-get install gcc-multilib</code><br>2.在终端测试工具链是否可行，首先输入<code>Objdump -i</code>，输出第二行应为elf32-i386。然后输入<code>gcc -m32 -print-libgcc-file-name</code>,如果两个命令都成功，就说明无需再编译工具链，具体如下图所示：<br><img src="https://img-blog.csdnimg.cn/20200327220518122.png" srcset="/img/loading.gif" alt="">)<img src="https://img-blog.csdnimg.cn/2020032722055989.png" srcset="/img/loading.gif" alt=""><br>3.下载qemu前，首先安装libsdl1.2-dev，libtool-bin，libglib2.0-dev，libz-dev和libpixman-1-dev几个包。<br>4.下载qemu，输入<br><code>git clone https://github.com/mit-pdos/6.828-qemu.git qemu</code> 吐槽一句，下载是真慢啊！<br>5.配置源代码，输入<code>./configure --disable-kvm --disable-werror [--prefix=自选路径] [--target-list=”i386-softmmu x86_64-softmmu”],</code>然后运行<code>make &amp;&amp; make install</code></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>拆弹进程记录3-5</title>
     <link href="/2020/03/23/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%953-5/"/>
     <url>/2020/03/23/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%953-5/</url>
