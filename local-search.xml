@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>日常记录</title>
+    <link href="/2020/07/05/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/"/>
+    <url>/2020/07/05/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p>之前一直用的蓝灯近期突然崩了，思来想去，觉得还是不要偷懒了。故决定自行搭建一个梯子，幸运的是找到了一篇相当靠谱的教程，链接如下：<a href="http://luyiminggonnabeok.cn/2019/10/18/%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AEV2ray%E6%A2%AF%E5%AD%90%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">V2ray+WS+TLS+Web梯子详细教程</a><br>认真讲，这种奶妈式教程真是我等菜鸡的福音啊！真希望可以变成这种造福群众的大佬（请不要叫醒我）<br>简单说一下过程吧</p><ul><li>注册<a href="https://my.vultr.com/" target="_blank" rel="noopener">vultr</a>账号，购买vps。</li><li>到<a href="https://console.cloud.tencent.com/cns/detail/qinhuaimu.club/records/0#" target="_blank" rel="noopener">腾讯云</a>购买域名，并输入已购vps的ip进行解析</li><li>脚本安装v2ray服务端，首先要下ssh软件putty，mac下装putty有点点麻烦，具体步骤如下所示：<a href="https://www.jianshu.com/p/ec552ffb84fc" target="_blank" rel="noopener">mac下载putty</a><br>另外，mac的v2rayU的下载链接：<a href="https://pan.baidu.com/s/1YwztHnkYW0Vcf2NnAhutYw" target="_blank" rel="noopener">v2rayU</a> 提取码：7jgb</li></ul><p>原本想做一个pwn题试试，然而事实证明我太高估自己了。只能先看看网上入门题的一般解题思路了，幸而有很好的入门介绍，不至于全然懵。链接记录一下：<a href="https://blog.csdn.net/weixin_41594045/article/details/83239801?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">pwn入门1</a>、<a href="https://www.jianshu.com/p/187b810e78d2" target="_blank" rel="noopener">pwn入门2</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MIT6.828 环境搭建</title>
     <link href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <url>/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
