@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>日常记录3</title>
+    <link href="/2020/07/07/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%953/"/>
+    <url>/2020/07/07/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%953/</url>
+    
+    <content type="html"><![CDATA[<p>今日刚看完汇编语言的第四章，就觉得自己又可以了，兴冲冲想去做个题试试。结果直接垮掉，没拿到flag（宽面条泪），梁静茹给的勇气不靠谱啊！<br>罢了，虽然失败，还是说说主要的解题过程吧（不然也没啥好讲的）。首先下载文件，ida查看代码。然后分析漏洞，利用漏洞写出exp，最常用的是用到python的pwntools。最后使用nc或者pwntools连接到虚拟场景实现漏洞攻击得到flag。另外贴一些解题过程中用到的好文链接<br>关于栈溢出基础，这篇文章讲的真的超超超详细，相当感动了。附链接：<a href="https://bbs.ichunqiu.com/thread-42241-1-1.html" target="_blank" rel="noopener">栈溢出基础</a><br>栈溢出常用解题套路：<a href="https://www.cnblogs.com/-hack-/p/12105748.html" target="_blank" rel="noopener">栈溢出解题类型</a><br>常用解题套路：<a href="https://bbs.pediy.com/thread-251000.htm" target="_blank" rel="noopener">我是套路</a><br>另外，发一下mac10.15可以用的IDA pro下载链接吧：<a href="https://download.csdn.net/download/m0_38076563/12338665?utm_medium=distribute.pc_relevant_t0.none-task-download-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-download-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">下载链接</a><br>附加两篇ida使用说明：<a href="https://blog.csdn.net/john_david_/article/details/102822253" target="_blank" rel="noopener">使用说明1</a>、<a href="https://www.52pojie.cn/thread-1142065-1-1.html" target="_blank" rel="noopener">使用说明2</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>日常记录2</title>
     <link href="/2020/07/06/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%952/"/>
     <url>/2020/07/06/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%952/</url>
