@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>数组简单刷题记录 - 万里无翳</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>万里无翳</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Tuesday, April 27th 2021, 4:54 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    1.6k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      5 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h2 id="1-数组-简单-找到所有数组中消失的数字"><a href="#1-数组-简单-找到所有数组中消失的数字" class="headerlink" title="1.数组-简单-找到所有数组中消失的数字"></a>1.数组-简单-找到所有数组中消失的数字</h2><p><img src="https://img-blog.csdnimg.cn/20210427163741301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>这道题的收获就是又重温了一下基本概念，空间复杂度和java里面list的使用。</p>
+<p>**</p>
+<h2 id="本题思路简述"><a href="#本题思路简述" class="headerlink" title="本题思路简述"></a>本题思路简述</h2><p>**</p>
+<p>这个题的难点主要就是在于实现自己编写代码空间复杂度O(1)，时间复杂度（n）。通过空间复杂度的要求，可以看出，最好我们自己不要再开辟一个新的数组了，就用题目中已经给的nums数组会比较好一些。</p>
+<p>主要思路就是对nums进行遍历，将里面每一个数字对应的i进行加n操作，然后再重新进一遍遍历，看看数组里哪一个i对应的nums[i]是小于n的，如果小于，那么就是我们需要的答案。</p>
+<p>需要注意的就是，为了避免遍历的时候，当时的数字已经执行了+n操作，所以需要对每一个数字进行%n操作，还原回原来的数字。</p>
+<h2 id="2-数组-简单-买卖股票的最佳时机"><a href="#2-数组-简单-买卖股票的最佳时机" class="headerlink" title="2.数组-简单-买卖股票的最佳时机"></a>2.数组-简单-买卖股票的最佳时机</h2><p><img src="https://img-blog.csdnimg.cn/20210427164040986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p>
+<h2 id="2-1思路提点"><a href="#2-1思路提点" class="headerlink" title="2.1思路提点"></a>2.1思路提点</h2><p>这个题用两种方法求解的，一种利用了动归思想，一种利用了暴力求解思想。<br>本质上就是求数组里前后两个数之差的最大值。（注意，一定是一前一后）</p>
+<h2 id="2-2思路简述"><a href="#2-2思路简述" class="headerlink" title="2.2思路简述"></a>2.2思路简述</h2><p>1.动态规划思路<br>用这个思路的话，主要的点就是要设立两个值min，max来进行记录<br>其中，min值记录的是到当前数组i的位置之前区域的最小值<br>Max值记录的是利润最大值。<br>每次遍历的时候，执行两个判断：<br>1.min=Math.min(min.nums[I]);<br>2.max=Math.max(max,nums[I]-min);</p>
+<p>最后返回max就可以啦</p>
+<p>2.暴力求解思路<br>简单粗暴，就是计算出数组里每两个前后数字之差。但是会超时<br>核心代码.  max=Math.max(max,   mums[j]-nums[I]);</p>
+<h2 id="3-数组-简单-多数元素（求众数）"><a href="#3-数组-简单-多数元素（求众数）" class="headerlink" title="3.数组-简单-多数元素（求众数）"></a>3.数组-简单-多数元素（求众数）</h2><p><img src="https://img-blog.csdnimg.cn/20210427164452521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p>
+<h2 id="3-1-思路提点"><a href="#3-1-思路提点" class="headerlink" title="3.1 思路提点"></a>3.1 思路提点</h2><p>首先说一下，这道题里面学到了怎么在java里面调用排序；<br>就是用Arrays.sort( )这个方法；<br>另外就是学到了摩尔投票法这个方法。</p>
+<h2 id="3-2-思路简述"><a href="#3-2-思路简述" class="headerlink" title="3.2 思路简述"></a>3.2 思路简述</h2><p>1一种比较简单的方法-排序法</p>
+<p>主要思想就是将数组先进行排序，因为这个题目说了，一定存在出现次数超过半数以上的数字，所以排序之后的数组，中间的那个数，一定就是众数。<br>用Arrays.sort（）这个方法。</p>
+<p>2.进阶方法-摩尔投票法</p>
+<p>其主要思想就是用投票的方法来进行判断，如果有相同的，就计数+1，视为投赞成票，如果不相同，则计数-1。如果计数减为0，那么就换一个数，再进行以上的计数模式。</p>
+<p>因为多数元素的个数-其余元素的总个数》=1<br>所以抵消到最后肯定还剩余至少一个多数元素。<br><img src="https://img-blog.csdnimg.cn/20210427164709678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p>
+<h2 id="3-3-求众数2（进阶版）"><a href="#3-3-求众数2（进阶版）" class="headerlink" title="3.3 求众数2（进阶版）"></a>3.3 求众数2（进阶版）</h2><p><img src="https://img-blog.csdnimg.cn/20210427164841563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>这道题和上一道最大的区别就是从选一个众数变成了选两个最多数。<br>怎么说呢，要找到其中所有出现超过n/3的数，那么最多只存在两个数满足，因为三个数都超过n/3的话，那么就超过1了，明显不可能。<br>所以此时就将候选者设置为2个，用上一题的方法来用其他的数和这两个数进行对比，如果相同则加1，如果不同则减1。如果此时count为0，则替换候选者后再将count置一。</p>
+<p>而且需要注意的是，在选出两个候选者之后，必须重新对他们进行计数验证，看看是不是真的大于1/3，如果确定是，那么就加入list。<br>此题结束。</p>
+<p>下面是一个小小的总结。<br><img src="https://img-blog.csdnimg.cn/20210427164923430.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p>
+<h2 id="4-数组-简单-最大子序和"><a href="#4-数组-简单-最大子序和" class="headerlink" title="4.数组-简单-最大子序和"></a>4.数组-简单-最大子序和</h2><p><img src="https://img-blog.csdnimg.cn/20210427165045875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>题解：这道题主要就是运用了动态规划的思想。<br>它的核心思路就是设立dp[ ]数组，来记录如果截止到nums数组里的各元素i时，在nums[0]到nums[i]这一段区域里连续子数组的最大和。(⚠️，这里是指这一段区域一定以元素i为最后一个)<br>即，dp[3]，存储的就是nums数组里0-3这一块区域里连续子数组的最大和，也就是4自己一个数组，其和为4.</p>
+<p>计算dp数组里的值的具体方法思路如下所示：</p>
+<p>dp[0]的值也就是第一个数的值；<br>dp[1]=max（dp[0],0）+nums[1];</p>
+<p>同理<br>Dp[I]=max(dp[i-1],0)+nums[i];</p>
+<p>在计算dp数组的数值时，时刻进行比较，选出dp数组里最大的那一个，就是我们需要的最大值啦，是不是很简单呢。</p>
+<h2 id="5-数组-简单-两数之和"><a href="#5-数组-简单-两数之和" class="headerlink" title="5.数组-简单-两数之和"></a>5.数组-简单-两数之和</h2><p><img src="https://img-blog.csdnimg.cn/20210427165208707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>这个题解的关键就在于应用HashMap。map的key指的数值，value指的该数值在传入里数组排第几（即数组下标）<br>解题的主要思路，就是在map数组里面查看是否有key，其值等于targer减去nums[i]，如果有的话，就反回其value和i，也就是两个数的数组下标。<br>然后就解决啦！</p>
+<h2 id="6-数组-简单-移动零"><a href="#6-数组-简单-移动零" class="headerlink" title="6.数组-简单-移动零"></a>6.数组-简单-移动零</h2><p><img src="https://img-blog.csdnimg.cn/20210427165307280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br><strong>比较简单的一个解题思路</strong>：设立两个指针，一个j，在初始数组str1里面进行循环，一旦发现不是0的数，就放到另一个数组array里面。然后指针j定格到所有非0数字的最后一个，也就是得到了所有非0数据的个数。<br>然后将str1剩余个数都设置为0就可以了。</p>
+<p><strong>另外一个解题思路，主要就是借鉴的快速排序的思路</strong>。<br>同样设置两个指针i，j，如果i当前值是等于零的，那么j不动，i++；<br>如果i当前值不等于零，那么i，j进行交换，j++，i++；<br>本质就是要保证j左边的数都是非零的。</p>
+<p>本质是一个循环不变量：在每一次循环前，j 的左边全部都是不等于0的</p>
+<ul>
+<li>起始j为0，明显满足</li>
+<li>此后每一次循环中，若nums[i] = 0，则j保持不变，满足；若nums[i] != 0，交换后j增一，仍然满足</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数组简单刷题记录&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
