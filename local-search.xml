@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>数组之双指针</title>
+    <link href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    <url>/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    
+    <content type="html"><![CDATA[<h2 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27.移除元素"></a>27.移除元素</h2><p><img src="https://img-blog.csdnimg.cn/20210503235241580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个题有两种方法，第一种是暴力，另一种是双指针法。而且需要注意的是不能使用额外的数组空间。<br>但这两种方法的本质相同，都是将不等于val的数移到数组左部，或者说，将等于val和不等于val的两部分进行分离。<br>暴力法的核心算法是每当遇到一个等于val的数nums[i]时，就将下标i之后的所有数都向前移一位，移完后将数组nums的size减1。最后返回size；</p><pre><code class="java">public static int removeelement(int[] nums,int val) {          int size=nums.length;          for(int i=0;i&lt;size;i++) {              if(nums[i]==val) {                for(int j=i+1;j&lt;size;j++) {                    nums[j-1]=nums[j];                }                size--;                i--;              }          }          return size；     }</code></pre><p>双指针法的核心算法在于设立left、right快慢指针，right指针任务是进行遍历，而left指针任务是保存值不是val的数，当right指针遇到不是val的数时，left指针将该数进行存储后右移。<br>left从左边界0开始，如果nums[right]不等于val，那么nums[left]=nums[right]，同时left指针+1。最后返回的left指针，指向左部存储非val值的最后一位。</p><pre><code class="java">public int removeElement(int[] nums, int val) {        int left=0;        for(int right=0;right&lt;nums.length;right++) {            if(nums[right]!=val) {                nums[left]=nums[right];                left++;            }           }        return left;    }</code></pre><h2 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h2><p><img src="https://img-blog.csdnimg.cn/20210503235344276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>首先要注意题目给出的是一个有序数组！换言之，重复的元素都是挨着的。<br>关键思路就是设置left和right指针（快慢指针），right指针负责遍历，left指针则负责判断right指针指向的元素是否和自己指向的元素相同，如果相同，则不动如山。如果不同，则left右移一位，并存储right指向的元素。即nums[left++]=nums[right];<br>注意，最后要返回left+1；因为是要返回数组的新长度。</p><pre><code class="java">public static int removeduplicates(int[] nums) {         int left=0;         for(int right=0;right&lt;nums.length;right++) {             if(nums[right]!=nums[left]) {                 nums[++left]=nums[right];             }         }         return left+1;     }</code></pre><p><strong>双指针套路合集</strong><br><a href="https://zhuanlan.zhihu.com/p/95747836" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/95747836</a><br>可看上面这个总结</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数组简单刷题记录</title>
     <link href="/2021/04/27/%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     <url>/2021/04/27/%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
