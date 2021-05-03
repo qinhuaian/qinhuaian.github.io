@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>数组之滑动窗口</title>
+    <link href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
+    <url>/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="滑动窗口模版"><a href="#滑动窗口模版" class="headerlink" title="滑动窗口模版"></a>滑动窗口模版</h2><p><img src="https://img-blog.csdnimg.cn/2021050400001523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><pre><code class="java">初始化慢指针 = 0初始化 ansfor 快指针 in 可迭代集合   更新窗口内信息(通常是快指针逐增，也就是对右边界进行操作)   while 窗口内不符合题意      扩展或者收缩窗口（通常是对左边界进行操作）      慢指针移动   更新答案返回 ans</code></pre><p><strong><strong>看到题目想到要用滑动窗口法，关键词就在于“连续”，最后所求的大概率是一段连续子序列，同时不改变数组原来的位置。</strong></strong></p><h2 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209.长度最小的子数组"></a>209.长度最小的子数组</h2><p><img src="https://img-blog.csdnimg.cn/20210504000212521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>题目中要求找出长度最小的连续子数组，那么就要想到用滑动窗口来解题的可能性。<br>这个题直接套模版就可以，快指针不断向右边界靠近，并实时判断此时快慢指针包括区间内的总和sum是否大于给定值val。<br>一旦大于，也就是快慢指针区间之间可以减少元素，那么就需要慢指针上场了。<br>首先记录此时的最小长度minlen是否为快慢指针之间的长度right-left+1。然后left右移，区间缩小，sum减小后再进行判断，如此循环。</p><pre><code class="java">public static int theminsubarraylen(int[] nums,int val) {     int minlen=Integer.MAX_VALUE;     int left=0;     int sum=0;     for(int right=0;right&lt;nums.length;right++) {//右边界扩展         sum+=nums[right];         while(sum&gt;=val) {//当不满足条件时，也就是需要满足保证sum&gt;=val并且快慢指针区间长度最小             minlen=Math.min(minlen, right-left+1);             sum-=nums[left++];//快慢指针区间缩小         }     }     return minlen==Integer.MAX_VALUE?0:minlen;//务必要加这一句，不然当便利完整个数组依然不满足条件的时候，minlen不会被赋值，会是一开始赋的Integer.MAXVALUE的值}</code></pre><h2 id="904-水果成篮"><a href="#904-水果成篮" class="headerlink" title="904.水果成篮"></a>904.水果成篮</h2><p><img src="https://img-blog.csdnimg.cn/20210504000347459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个题目的关键是读懂题意，本质上就是让求一段最长的连续子序列，这一段序列里只能出现两种数字。看到连续，想到滑动窗口解法。</p><p>主要思路还是可以套模版，但是因为要考虑到两种元素，要加上对map的运用。</p><pre><code class="java">public static int totalfruit(int[] nums) {         if(nums==null||nums.length==0)             return 0;         int len=nums.length;         Map&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;();         int maxSum=0,left=0;         for(int right=0;right&lt;len;right++) {             map.put(nums[right], map.getOrDefault(nums[right], 0)+1);             while(map.size()&gt;2) {//当不符合条件时，也就是超过两种元素，调整左边界即慢指针                 map.put(nums[left], map.get(nums[left])-1);                 if(map.get(nums[left])&lt;1) {                     map.remove(nums[left]);                 }                 left++;             }             maxSum=Math.max(maxSum, right-left+1);         }         return maxSum;     }</code></pre><p><a href="https://github.com/azl397985856/leetcode/blob/master/thinkings/slide-window.md" target="_blank" rel="noopener">https://github.com/azl397985856/leetcode/blob/master/thinkings/slide-window.md</a><br><strong>介绍相关的博文，很详细</strong></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数组之双指针</title>
     <link href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     <url>/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/</url>

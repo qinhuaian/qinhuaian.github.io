@@ -137,6 +137,51 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+        <p class="h4 index-header">数组之滑动窗口</p>
+      </a>
+
+      <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">滑动窗口模版
+初始化慢指针 = 0
+初始化 ans
+for 快指针 in 可迭代集合
+   更新窗口内信息(通常是快指针逐增，也就是对右边界进行操作)
+   while 窗口内不符合题意
+      扩展或者收缩窗口（通常是对左边界进行操作）
+      慢指针移动
+   更新答案
+返回 ans
+看到题目想到要用滑动窗口法，关键词就在于“连续”，最后所求的大概率是一段连续子序列，同时不改变数组原来的位置。
+209.长度最小的子数组
+思路简述题目中要求找出长度最小的连续子数组，那么就要想到用滑动窗口来解题的可能性。这个题直接套模版就可以，快指针不断向右边界靠近，并实时判断此时快慢指针包括区间内的</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/leetcode/">leetcode</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
         <p class="h4 index-header">数组之双指针</p>
       </a>
@@ -410,34 +455,6 @@ public static int removeelement(int[] nums,int val) {
       <div class="index-btm">
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/20/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%20-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">第二阶段 -第一次记录</p>
-      </a>
-
-      <a href="/2020/03/20/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%20-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">装了一天的linux虚拟机，疲于修改各种奇奇怪怪的小bug。现在就有两个感悟：1.删除重装大法好，菜鸡必备。2.你永远不知道之前嫌弃占空间删掉的软件什么时候会再下回来，能留着就留着吧，重新下怪麻烦的。简单说下安装过程吧，我用的virtualbox+ubuntu（用vb其实是因为穷，免费使用它不香吗？)具体安装过程可见：虚拟机安装过程设置共享文件夹可能会有点问题，自动挂载行不通的话还是莫要强求了，直接用手动挂载吧。具体方法可见共享文件夹的几种设置方法全都装完后想执行一下bomb，结果？？？一直提醒我没有那个文件或目录。整了好久才知道是因为我的ubuntu是64位的，没有32位的运行库。在终端安装</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-20&nbsp;&nbsp;
         
         
         
