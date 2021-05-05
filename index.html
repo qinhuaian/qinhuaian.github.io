@@ -137,6 +137,84 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
+        <p class="h4 index-header">链表之双指针</p>
+      </a>
+
+      <a href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">下面两道题本质上都是链表求交点问题，有环的链表就用快慢指针（龟兔赛跑思想）来解决，无环的链表则思考如何达成长度相同的路径的目标。
+141.环形链表
+public boolean hascycle(ListNode head) {
+    if(head==null||head.next==null) {
+        return false;
+    }
+    ListNode fast=head.next;
+    ListNode slow=head;
+    while(slow!=fast) {
+        if(fast==null||fast.next==null)
+  </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-06&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/leetcode/">leetcode</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/06/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%AE%80%E8%A6%81%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">递归算法简要概述</p>
+      </a>
+
+      <a href="/2021/05/06/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%AE%80%E8%A6%81%E6%A6%82%E8%BF%B0/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">递归的三大步骤1.明确函数要做什么，也就是定义递归的功能。2.明确递归的结束（退出递归）的条件。3.找到函数的等价关系式，要不断缩小参数的范围
+模型一：在递去的过程中解决问题
+function recursion(大规模){
+      if (end_condition){ // 明确的递归终止条件
+             end; // 简单情景 
+        }else{ // 在将问题转换为子问题的每一步，解决该步中剩余部分的问题                                                  
+     solve;  //递去
+     re</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-06&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/05/04/%E9%93%BE%E8%A1%A8%E4%B9%8B%E9%80%92%E5%BD%92/">
         <p class="h4 index-header">链表之递归</p>
       </a>
@@ -410,74 +488,11 @@ public static int removeelement(int[] nums,int val) {
     </div>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-        <p class="h4 index-header">MIT6.828 环境搭建</p>
-      </a>
-
-      <a href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">总的来说，需要构建x86仿真器QEMU和一个编译器工具链。具体步骤如下：1.安装linux虚拟机，如果是64位计算机的话先安装32位支持库，输入：sudo apt-get install gcc-multilib2.在终端测试工具链是否可行，首先输入Objdump -i，输出第二行应为elf32-i386。然后输入gcc -m32 -print-libgcc-file-name,如果两个命令都成功，就说明无需再编译工具链，具体如下图所示：)3.下载qemu前，首先安装libsdl1.2-dev，libtool-bin，libglib2.0-dev，libz-dev和libpixman-1-de</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/MIT6-828/">MIT6.828</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/23/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%953-5/">
-        <p class="h4 index-header">拆弹进程记录3-5</p>
-      </a>
-
-      <a href="/2020/03/23/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%953-5/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">第三阶段跳转查询地址第三阶段首先找到输入格式是“%d %c %d”，输入的第一个数需要保证在2-7之间，并根据输入的这个数来进行跳转。然后需要保证输入的第三个数字等于0x38b即907，并进一步跳转，判断第二次输入的字符和al寄存器所存是否相等，相等即通关。最后结果是”3 l 907”
-第四阶段第四阶段最关键的递归调用程序我还有点迷糊，只看出来了如果第二个数是4，第一个数就是4的倍数，然后试出来的48和4。
-第五阶段第五阶段就是首先知道输入字符串的长度需要为6，然后进行一个循环，由ax寄存器的值当作循环变量，每次循环依次将输入的单个字符的ascII码的低四位存到cx寄存器中，并把0x804a2</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-23&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
