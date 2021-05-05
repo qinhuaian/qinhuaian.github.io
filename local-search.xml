@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>回文链表</title>
+    <link href="/2021/05/06/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/"/>
+    <url>/2021/05/06/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20210506003545595.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="第一种思路：利用栈"><a href="#第一种思路：利用栈" class="headerlink" title="第一种思路：利用栈"></a>第一种思路：利用栈</h2><pre><code class="java">public boolean ispalindrome(ListNode head) {         Stack&lt;ListNode&gt; stack=new Stack&lt;&gt;();         ListNode tmp=head;         while(head!=null) {.     //⚠️，不能写成head.next!=null             stack.push(head);             head=head.next;         }         while(tmp!=null) {. //同理，不能写成tmp.next!=null             if(tmp.val!=stack.pop().val) {                 return false;             }             tmp=tmp.next;             }         return true;     }</code></pre><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>本题的基本思路就是利用回文串的特性，从链表头部开始遍历和尾部开始遍历所经历的元素应该是完全一致的。所以就利用栈先进后出的性质，先创建一个栈来存储链表内容，然后把pop出的元素数值和从链表头部开始遍历的元素数值一一进行比较，如果完全一致就返回true。</p><h2 id="第二种思路：反转后半部分链表"><a href="#第二种思路：反转后半部分链表" class="headerlink" title="第二种思路：反转后半部分链表"></a>第二种思路：反转后半部分链表</h2><pre><code class="java"> public ListNode reverse(ListNode head) {        if(head==null||head.next==null) {            return head;        }        ListNode cur=reverse(head.next);        head.next.next=head;        head.next=null;        return cur;    }    public boolean isPalindrome(ListNode head) {        ListNode fast=head;        ListNode slow=head;        while(fast!=null&amp;&amp;fast.next!=null) {//注意要把fast!=null放在fast.next!=null前面，防止空指针错误。            fast=fast.next.next;            slow=slow.next;        }//这个循环是为了让slow指向链表中央的节点。        //slow=slow.next;        fast=head;        slow=reverse(slow);//反转后半段链表        while(slow!=null) {//进行比较            if(fast.val!=slow.val) {                return false;            }            slow=slow.next;            fast=fast.next;        }        return true;    }</code></pre><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个题的主要思路就是利用快慢指针，将快指针的步速设置为慢指针的两倍，这样当快指针遍历完时，慢指针正好指向链表中间节点。然后对慢指针指向的后半段链表执行反转操作。将快指针调到链表头节点。然后快慢指针逐一进行对比，判断其值是否相同。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>链表之双指针</title>
     <link href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     <url>/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/</url>
