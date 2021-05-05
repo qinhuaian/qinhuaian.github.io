@@ -137,6 +137,46 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/04/%E9%93%BE%E8%A1%A8%E4%B9%8B%E9%80%92%E5%BD%92/">
+        <p class="h4 index-header">链表之递归</p>
+      </a>
+
+      <a href="/2021/05/04/%E9%93%BE%E8%A1%A8%E4%B9%8B%E9%80%92%E5%BD%92/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">206.反转链表主要有两种解法，双指针迭代和递归方法
+1.双指针迭代法public ListNode reverseList(ListNode head) {
+             ListNode pre=null;
+             ListNode cur=head;//cur一开始赋值为头节点
+             ListNode tmp=null;//该变量负责保存cur的下一个节点，起暂存储功能
+             while(cur!=null) {
+                 tmp=cur.next;
+                 cur.n</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/leetcode/">leetcode</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
         <p class="h4 index-header">数组之滑动窗口</p>
       </a>
@@ -157,9 +197,9 @@ for 快指针 in 可迭代集合
       慢指针移动
    更新答案
 返回 ans
-看到题目想到要用滑动窗口法，关键词就在于“连续”，最后所求的大概率是一段连续子序列，同时不改变数组原来的位置。
+看到题目想到要用滑动窗口法，关键词就在于“连续”，最后所求的大概率是一段连续子序列，同时不改变数组原来的位置。滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)的暴力解法降为O(n)。
 209.长度最小的子数组
-思路简述题目中要求找出长度最小的连续子数组，那么就要想到用滑动窗口来解题的可能性。这个题直接套模版就可以，快指针不断向右边界靠近，并实时判断此时快慢指针包括区间内的</div>
+思路简述题目中要求找出长度最小的连续子数组，那</div>
         </div>
       </a>
 
@@ -426,35 +466,6 @@ public static int removeelement(int[] nums,int val) {
       <div class="index-btm">
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-23&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/21/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%951-2/">
-        <p class="h4 index-header">拆弹进程记录1-2</p>
-      </a>
-
-      <a href="/2020/03/21/%E6%8B%86%E5%BC%B9%E8%BF%9B%E7%A8%8B%E8%AE%B0%E5%BD%951-2/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">第一阶段是将输入的内容和0x804a1c4存的内容相比较，相等则可以通过。第二阶段要求输入六个数字，并且输入的第一个数字必须为1。整个程序经历五次循环，将循环变量从1开始相加，或者说做乘2运算（eax+eax），每次循环都要和相应次序输入的数字进行比较，必须保证都相等才能避免爆炸。
-</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
         
         
         
