@@ -13,18 +13,18 @@
     
     <categories>
       
-      <category>链表</category>
-      
-      <category>虚拟节点</category>
-      
-      <category>双指针</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>链表</tag>
+      
+      <tag>双指针</tag>
+      
+      <tag>虚拟节点</tag>
       
     </tags>
     
@@ -42,18 +42,18 @@
     
     <categories>
       
-      <category>链表</category>
-      
-      <category>栈</category>
-      
-      <category>双指针</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>链表</tag>
+      
+      <tag>栈</tag>
+      
+      <tag>双指针</tag>
       
     </tags>
     
@@ -71,16 +71,16 @@
     
     <categories>
       
-      <category>链表</category>
-      
-      <category>双指针</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>链表</tag>
+      
+      <tag>双指针</tag>
       
     </tags>
     
@@ -98,14 +98,14 @@
     
     <categories>
       
-      <category>递归</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>递归</tag>
       
     </tags>
     
@@ -123,16 +123,16 @@
     
     <categories>
       
-      <category>链表</category>
-      
-      <category>递归</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>链表</tag>
+      
+      <tag>递归</tag>
       
     </tags>
     
@@ -150,16 +150,16 @@
     
     <categories>
       
-      <category>数组</category>
-      
-      <category>滑动窗口</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>数组</tag>
+      
+      <tag>滑动窗口</tag>
       
     </tags>
     
@@ -177,16 +177,16 @@
     
     <categories>
       
-      <category>数组</category>
-      
-      <category>双指针</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>双指针</tag>
+      
+      <tag>数组</tag>
       
     </tags>
     
@@ -204,14 +204,14 @@
     
     <categories>
       
-      <category>数组</category>
+      <category>leetcode</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>leetcode</tag>
+      <tag>数组</tag>
       
     </tags>
     
@@ -229,14 +229,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -254,14 +254,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -279,14 +279,14 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>MIT6.828</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>MIT6.828</tag>
+      <tag>操作系统</tag>
       
     </tags>
     
@@ -315,12 +315,12 @@
     <content type="html"><![CDATA[<p>总的来说，需要构建x86仿真器QEMU和一个编译器工具链。具体步骤如下：<br>1.安装linux虚拟机，如果是64位计算机的话先安装32位支持库，输入：<br><code>sudo apt-get install gcc-multilib</code><br>2.在终端测试工具链是否可行，首先输入<code>Objdump -i</code>，输出第二行应为elf32-i386。然后输入<code>gcc -m32 -print-libgcc-file-name</code>,如果两个命令都成功，就说明无需再编译工具链，具体如下图所示：<br><img src="https://img-blog.csdnimg.cn/20200327220518122.png" srcset="/img/loading.gif" alt="">)<img src="https://img-blog.csdnimg.cn/2020032722055989.png" srcset="/img/loading.gif" alt=""><br>3.下载qemu前，首先安装libsdl1.2-dev，libtool-bin，libglib2.0-dev，libz-dev和libpixman-1-dev几个包。<br>4.下载qemu，输入<br><code>git clone https://github.com/mit-pdos/6.828-qemu.git qemu</code> 吐槽一句，下载是真慢啊！<br>5.配置源代码，输入<code>./configure --disable-kvm --disable-werror [--prefix=自选路径] [--target-list=”i386-softmmu x86_64-softmmu”],</code>然后运行<code>make &amp;&amp; make install</code></p>]]></content>
     
     
+    <categories>
+      
+      <category>MIT6.828</category>
+      
+    </categories>
     
-    <tags>
-      
-      <tag>MIT6.828</tag>
-      
-    </tags>
     
   </entry>
   
@@ -336,14 +336,14 @@
     
     <categories>
       
-      <category>拆弹</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>拆弹</tag>
       
     </tags>
     
@@ -361,14 +361,14 @@
     
     <categories>
       
-      <category>拆弹</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>拆弹</tag>
       
     </tags>
     
@@ -386,14 +386,14 @@
     
     <categories>
       
-      <category>拆弹</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>拆弹</tag>
       
     </tags>
     
@@ -411,14 +411,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -436,14 +436,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -461,14 +461,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -486,14 +486,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -511,14 +511,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -536,14 +536,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -561,14 +561,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     
@@ -586,14 +586,14 @@
     
     <categories>
       
-      <category>pwn</category>
+      <category>二进制安全</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>二进制安全</tag>
+      <tag>pwn</tag>
       
     </tags>
     

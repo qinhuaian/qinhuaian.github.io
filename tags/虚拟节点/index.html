@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="常怀牧">
   <meta name="keywords" content="">
-  <title>mit 6.828-lab1-第一次记录 - 太阳照常升起</title>
+  <title>标签 - 虚拟节点 - 太阳照常升起</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -115,33 +115,6 @@
             </span>
 
             
-              
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期日, 七月 5日 2020, 11:47 晚上
-                </p>
-              
-
-              <p class="mt-1">
-                
-                  
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    630 字
-                  </span>
-                
-
-                
-                  
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      2 分钟
-                  </span>
-                
-
-                
-              </p>
-            
           </div>
 
           
@@ -152,72 +125,37 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+<!--  <p class="h4">共计 1 篇文章</p>-->
+  <hr>
+  
+    
       
+      <p class="h5">2021</p>
+    
+    <a href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">链表之移除元素</span>
+      <span style="float: right;">05-06</span>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-            <div class="markdown-body">
-              <p>提交文章时赫然看到上一次更新的时间，明晃晃挂着的三月两字刺痛了我的双眼，手里的炸鸡顿时不香了。原来不知不觉间已经当了这么多月的咸鱼？？唉，以后一定要天天坚持更博。再更一篇讲讲实验开始过程吧。<br>整个开始过程一言以蔽之：我以为的不是我以为的，但或许有可能真是我以为的。一开始运行都蛮顺利，让本万年非酋窃喜不已。直到运行make qemu-gdb时，弹出的窗口栏上出现的“stopped”打破了我的幻想。可是为什么为什么为什么？为什么什么错误提示也找不到？遍寻原因无果，且确认lab和qemu都没有下载错后，我以为可能会是虚拟机的问题，于是乎删了virtualbox重下了vmware和ubuntu镜像。然鹅，悲催的事情再度上演（流泪.jpg）令人迷惑的是，当我尝试着忽视这个令人伤心的点，继续实验过程时，居然！是可以正常运行的。这一切真是让人摸不着头脑。害，总觉得未来会有坑等着我。算啦，先讲讲遇到的一些小bug和解决方法吧！</p>
-<ol>
-<li>错误提示：<code>undefined reference to ‘minor&#39;、‘major’</code>，<br> 解决方法：在commands-posix.c文件中加上头文件&lt;sys/sysmacros.h&gt;.</li>
-<li>错误如图所示：<img src="https://img-blog.csdnimg.cn/20200705231944897.png#pic_center" srcset="/img/loading.gif" alt="">解决方法：在前面加sudo</li>
-<li>错误提示：auto-loading has been declined by…具体如图所示：<br><img src="https://img-blog.csdnimg.cn/20200705232157986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>解决方案及结果：<br><img src="https://img-blog.csdnimg.cn/20200705232422627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>使用‘si’命令，对ROM BIOS指令进行追踪，部分过程如下：<br><img src="https://img-blog.csdnimg.cn/20200705232528611.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>对指令的分析，这篇博客讲的挺好：<a href="https://www.cnblogs.com/fatsheep9146/p/5078179.html" target="_blank" rel="noopener">mit6.828 -1.2</a>但有些指令我还没完全弄明白，有些云里雾里的，明天再仔细研究研究吧。<br>综上，可以看出BIOS的主要操作的是控制并检测各种底层的设备，其的主要功能就是把操作系统从磁盘中导入内存，再把控制权转交给操作系统。所以BIOS在运行最后会检测可以从当前系统的哪个设备中找到操作系统，如果确定操作系统位于磁盘中，就会把这个磁盘的第一个扇区（boot sector）加载到内存中。boot sector中包括boot loader程序，该程序会将操作系统从磁盘导入内存，同时完成一些配置工作。最后操作系统开始运行。</li>
-</ol>
 
+
+              </div>
             </div>
-            <hr>
-            <div>
-              <p>
-                
-                  <span>
-                <i class="iconfont icon-inbox"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/MIT6-828/">MIT6.828</a>
-                      &nbsp;
-                    
-                  </span>&nbsp;&nbsp;
-                
-                
-                  <span>
-                <i class="iconfont icon-tag"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-                    
-                  </span>
-                
-              </p>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-              
-            </div>
-
-            
           </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
   </main>
 
@@ -282,57 +220,6 @@
 
 
 
-  
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var post = $('#post');
-      var toc = $('#toc');
-      var tocLimMax = post.offset().top + post.height() - navHeight;
-
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        scrollSmooth: true,
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
-      }
-      var offset = $('#board-ctn').css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
-    });
-  </script>
-
-
-
 
 
 
@@ -359,7 +246,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "mit 6.828-lab1-第一次记录&nbsp;",
+        "标签 - 虚拟节点&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
