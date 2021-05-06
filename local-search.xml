@@ -183,6 +183,18 @@
     <content type="html"><![CDATA[<p>提交文章时赫然看到上一次更新的时间，明晃晃挂着的三月两字刺痛了我的双眼，手里的炸鸡顿时不香了。原来不知不觉间已经当了这么多月的咸鱼？？唉，以后一定要天天坚持更博。再更一篇讲讲实验开始过程吧。<br>整个开始过程一言以蔽之：我以为的不是我以为的，但或许有可能真是我以为的。一开始运行都蛮顺利，让本万年非酋窃喜不已。直到运行make qemu-gdb时，弹出的窗口栏上出现的“stopped”打破了我的幻想。可是为什么为什么为什么？为什么什么错误提示也找不到？遍寻原因无果，且确认lab和qemu都没有下载错后，我以为可能会是虚拟机的问题，于是乎删了virtualbox重下了vmware和ubuntu镜像。然鹅，悲催的事情再度上演（流泪.jpg）令人迷惑的是，当我尝试着忽视这个令人伤心的点，继续实验过程时，居然！是可以正常运行的。这一切真是让人摸不着头脑。害，总觉得未来会有坑等着我。算啦，先讲讲遇到的一些小bug和解决方法吧！</p><ol><li>错误提示：<code>undefined reference to ‘minor&#39;、‘major’</code>，<br> 解决方法：在commands-posix.c文件中加上头文件&lt;sys/sysmacros.h&gt;.</li><li>错误如图所示：<img src="https://img-blog.csdnimg.cn/20200705231944897.png#pic_center" srcset="/img/loading.gif" alt="">解决方法：在前面加sudo</li><li>错误提示：auto-loading has been declined by…具体如图所示：<br><img src="https://img-blog.csdnimg.cn/20200705232157986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>解决方案及结果：<br><img src="https://img-blog.csdnimg.cn/20200705232422627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>使用‘si’命令，对ROM BIOS指令进行追踪，部分过程如下：<br><img src="https://img-blog.csdnimg.cn/20200705232528611.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt=""><br>对指令的分析，这篇博客讲的挺好：<a href="https://www.cnblogs.com/fatsheep9146/p/5078179.html" target="_blank" rel="noopener">mit6.828 -1.2</a>但有些指令我还没完全弄明白，有些云里雾里的，明天再仔细研究研究吧。<br>综上，可以看出BIOS的主要操作的是控制并检测各种底层的设备，其的主要功能就是把操作系统从磁盘中导入内存，再把控制权转交给操作系统。所以BIOS在运行最后会检测可以从当前系统的哪个设备中找到操作系统，如果确定操作系统位于磁盘中，就会把这个磁盘的第一个扇区（boot sector）加载到内存中。boot sector中包括boot loader程序，该程序会将操作系统从磁盘导入内存，同时完成一些配置工作。最后操作系统开始运行。</li></ol>]]></content>
     
     
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MIT6.828</tag>
+      
+    </tags>
     
   </entry>
   
