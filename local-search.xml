@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>链表之基本操作</title>
+    <link href="/2021/05/08/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <url>/2021/05/08/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20210508105827658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><pre><code class="java">public class ListNode{    int val;    ListNode next;    ListNode(int x){        val=x;    }    /*ListNode(){}    ListNode(int val,ListNode next){        this.val=val;        this.next=next;    }*/}class MyLinkedList{    int size;//来记录链表长度，每次调用增加节点或者减少节点时修改其值    ListNode head;//设置虚拟节点    public MyLinkedList(){        size=0;        head=new ListNode(0);//虚拟节点不计入长度计算    }    public int get(int index) {        if(index&lt;0||index&gt;=size) {//由于链表节点下标index由0开始(⚠️，)，而size的大小是除虚拟节点之外的节点总个数，所以节点下标index范围为[0-（size-1）]            return -1;        }        ListNode cur=head;        while(index+1&gt;0) {//加1是因为虚拟节点的原因            cur=cur.next;            index--;        }        return cur.val;        }        public void addAtHead(int val) {        addAtIndex(0,val);    }    public void addAtTail(int val) {            addAtIndex(size,val);    }    public void addAtIndex(int index,int val) {        if(index&gt;size) {            return ;        }        if(index&lt;0) {            index=0;        }        size++;//修改链表长度        ListNode pred=head;        for(int i=0;i&lt;index;++i) {//到达index-1节点，从虚拟节点开始走需要走index步            pred=pred.next;        }        ListNode toadd=new ListNode(val);        toadd.next=pred.next;        pred.next=toadd;        //size++;        }    public void deleteAtIndex(int index) {        if(index&lt;0||index&gt;=size)            return ;         size—;//修改链表长度          ListNode cur=head;            for(int i=0;i&lt;index;++i) {//到达index-1节点，从虚拟节点开始走需要走index步                cur=cur.next;            }            cur.next=cur.next.next;    }}</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>链表之环</title>
     <link href="/2021/05/08/%E9%93%BE%E8%A1%A8%E4%B9%8B%E7%8E%AF/"/>
     <url>/2021/05/08/%E9%93%BE%E8%A1%A8%E4%B9%8B%E7%8E%AF/</url>
