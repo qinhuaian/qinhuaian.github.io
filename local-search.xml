@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>链表之环</title>
+    <link href="/2021/05/08/%E9%93%BE%E8%A1%A8%E4%B9%8B%E7%8E%AF/"/>
+    <url>/2021/05/08/%E9%93%BE%E8%A1%A8%E4%B9%8B%E7%8E%AF/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20210508100406317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p><pre><code class="java">public ListNode detectCycle(ListNode head) {   ListNode slow=head;    ListNode fast=head;//开始时快慢指针都指向头节点    while(true) {        if(fast==null||fast.next==null)//一开始错是因为少了这个判断，这个判断是检查这个链表是否没有环。如果没有环，那么fast会走到null节点，否则会困在环里面永世历劫         return null;        slow=slow.next;        fast=fast.next.next;//将fast的步速设置为slow的两倍        if(slow==fast) { //当两者在环内相遇时            break;        }    }    fast=head;    /*while(true) {  //一开始这样写报错，这样没有考虑到slow和fast如果在一开始就是相等的情况，但是为什么超时还没想明白        fast=fast.next;          slow=slow.next;            if(slow==fast) {            break;        }    }*/    while(slow!=fast) {        slow=slow.next;        fast=fast.next;    }    return fast;}</code></pre><h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><p>这个题主要思路就是设置快慢指针，对<strong>头节点、环入口节点、快慢节点相遇节点</strong>这三个节点的掌握。<br><strong>首先</strong>，把快指针的步速调整为慢指针的二倍，这一步的目的是为了判断链表里面有没有环。如果没有环，快指针会到达尾节点，否则会一直困在循环里面。<br>当快指针和慢指针相等时，也就是在环内相遇时，大概率快指针已经快慢指针n圈了。设快指针走过的路的长度为f=s+nb；f=2s；由上面两式可得当快慢指针每次相遇时两个指针走过的路径符合下面这两个公式：f=2nb,s=nb;     （<strong>快慢指针一定会在慢指针在环内循环的第一圈就相遇，因为快指针步速是2倍，慢指针跑一圈快指针跑两圈。而且快指针比慢指针要先入环）</strong><br>假设头节点到环入口的节点数是a，不包括入口节点。而环内的节点数为b。<strong>慢指针每次到达环入口节点</strong>时的路径总保持下面的公式：s=a+nb；而快慢指针相遇时慢指针满足s=nb，也就是说慢指针再走a步就可以到达环入口节点。<br>而怎么让慢指针走a步呢？那么就需要一个指针来记录a步，把快指针调向头节点，快慢指针步速相同，那么当他们再次相遇时，就到达了环入口节点啦。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>链表</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>链表之移除元素</title>
     <link href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/"/>
     <url>/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</url>
