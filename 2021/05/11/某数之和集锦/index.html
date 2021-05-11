@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/default.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="常怀牧">
+  <meta name="keywords" content="">
+  <title>某数之和集锦 - 太阳照常升起</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>太阳照常升起</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/taiyang.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期二, 五月 11日 2021, 3:06 下午
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    1.8k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      8 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h2><p><img src="https://img-blog.csdnimg.cn/20210511145912579.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p>
+<pre><code class="java">public int[] calsum1(int[] nums,int tar) {
+
+    HashMap&lt;Integer,Integer&gt;map1=new HashMap&lt;&gt;();
+    for(int i=0;i&lt;nums.length;i++) {
+        if(map1.containsKey(tar-nums[i])) {
+            int[] ans=new int[] {map1.get(tar-nums[i]),i};
+            return ans;
+        }
+        map1.put(nums[i],i);
+    }
+    return null;
+
+}</code></pre>
+<h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><blockquote>
+<p>1.设置map，其key为nums数组里的各元素，其value则为该元素对应的下标。2.遍历数组，先判断map里是否有key等于target-nums[i]。<br>3.如果有，返回key对应的value下标和当前遍历的下标（题目中说只有一个答案符合，把这个问题简化了）<br>4.如果没有，把当前nums[i]和对应的下标i存入map。</p>
+</blockquote>
+<h2 id="454-四数相加2"><a href="#454-四数相加2" class="headerlink" title="454.四数相加2"></a>454.四数相加2</h2><p><img src="https://img-blog.csdnimg.cn/20210511150149534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p>
+<pre><code class="java">public int foursumcount(int[] a,int[] b,int[] c,int[] d) {
+    Map&lt;Integer,Integer&gt; table=new HashMap&lt;Integer,Integer&gt;();
+    for(int i=0;i&lt;a.length;i++) {
+        for(int j=0;j&lt;b.length;j++) {
+            int ans=a[i]+b[j];
+            table.put(ans, table.getOrDefault(ans, 0)+1);
+        }
+    }
+    int count=0;
+    for(int i=0;i&lt;c.length;i++) {    
+        for(int j=0;j&lt;d.length;j++) {
+            if(table.containsKey(0-(c[i]+d[j]))) {
+                count+=table.get(0-(c[i]+d[j]));
+            }
+        }
+    }
+    return count;
+}</code></pre>
+<h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><blockquote>
+<p>本题的解题关键就是设立一个map，其key保存ab数组任意两数之和，其value保存这个两数之和出现的次数。<br>然后判断这个map里是不是有key等于（0-c[i]-d[j]）的，也就是等于cd数组任意两数之和的倒数。并设立一个计数器count，如果有，就加上这个key对应的value。</p>
+</blockquote>
+<h2 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15.三数之和"></a>15.三数之和</h2><p><img src="https://img-blog.csdnimg.cn/20210511150340128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p>
+<pre><code class="java">public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
+    int len=nums.length;
+    List&lt;List&lt;Integer&gt;&gt; res=new ArrayList&lt;&gt;();//一开始就设置好数据格式，方便统一返回格式
+    if(nums==null||len&lt;3) {
+        return res ;//注意！这里不能返回null，应该按照设置的格式来返回
+    }
+    Arrays.sort(nums);//排序
+    for(int i=0;i&lt;len;i++) {
+        if(nums[i]&gt;0) {//如果此时这个数就大于0，那么之后就不可能会等于零，直接退出就好
+            break;
+        }
+        // 错误去重方法，将会漏掉-1,-1,2 这种情况
+        /*
+        if (nums[i] == nums[i + 1]) {
+            continue;
+        }
+        */
+        if(i&gt;0&amp;&amp;nums[i]==nums[i-1]) {//去重，如果当前的值和前面的值相等，那么直接跳过
+            continue;
+        }
+        int left=i+1;
+        int right=len-1;
+        while(left&lt;right){
+            int count=nums[left]+nums[i]+nums[right];
+            // 去重复逻辑如果放在这里，0，0，0 的情况，可能直接导致 right&lt;=left 了，从而漏掉了 0,0,0 这种三元组
+            /*
+            while (right &gt; left &amp;&amp; nums[right] == nums[right - 1]) right--;
+            while (right &gt; left &amp;&amp; nums[left] == nums[left + 1]) left++;
+            */
+            if(count&gt;0) {//当三者之和大于0时，减少值，右指针--；
+                /*while(left&lt;right&amp;&amp;nums[right]==nums[right-1]) {//去重，
+                    right--;
+                }*/
+                //也可以加上上面的去重，但是会很大增加内存消耗，时间也没有快多少
+                //而且此时的去重不能加上left指针的去重，防止直接导致right《=left的情况
+                right--;
+            }
+            else if(count&lt;0) {//当三者之和小于0，增加值，左指针++；
+                /*while(left&lt;right&amp;&amp;nums[left]==nums[left+1]) {//去重
+                    left++;
+                }*/
+                //也可以加上上面的去重，但是会很大增加内存消耗，时间也没有快多少
+                //而且此时的去重不能加上right指针的去重，防止直接导致right《=left的情况
+                left++;
+            }
+            else {
+                res.add(Arrays.asList(nums[i],nums[left],nums[right]));
+                 // 去重逻辑应该放在找到一个三元组之后
+                while(left&lt;right&amp;&amp;nums[left]==nums[left+1]) {//去重
+                    left++;
+                }
+                while(left&lt;right&amp;&amp;nums[right]==nums[right-1]) {//去重
+                    right--;
+                }
+                left++;//当三者之和等于0时，左右指针同时内缩区间
+                right--;
+            }
+            /*去重逻辑放在最后也是不对的，此时的right和left都已经移动到下一个下标了。
+             * 如果要放，也是放在left++，right--前面，按照当前的指针进行去重
+            while(left&lt;right&amp;&amp;nums[left]==nums[left+1]) {//去重
+                left++;
+            }
+            while(left&lt;right&amp;&amp;nums[right]==nums[right-1]) {//去重
+                right--;
+            }*/
+        }
+    }
+    return res;
+    }</code></pre>
+<h2 id="解题步骤-1"><a href="#解题步骤-1" class="headerlink" title="解题步骤"></a>解题步骤</h2><blockquote>
+<p><strong>这道题最主要的思路就是排序+双指针+合理去重</strong><br>1.特判，对于数组长度 n，如果数组为 null或者数组长度小于 3，返回 []。<br>2.对数组进行排序。因为排序之后，相同的元素会排在一起，方便进行去重。<br>3.遍历排序后数组：<br>    3.1若 nums[i]&gt;0nums[i]&gt;0：因为已经排序好，所以后面不可能有三个数加和等于 0，直接返回结果。<br>    3.2 对于重复元素：跳过，避免出现重复解<br>4.令左指针 L=i+1，右指针 R=n-1，当 L&lt;R时，执行循环：<br>    4.1当 nums[i]+nums[L]+nums[R]==0，执行循环，判断左界和右界是否和下一位置重复，去除重复解。并同时将 L,R移到下一位置，寻找新的解<br>    4.2 若和大于 0，说明 nums[R] 太大，R左移，此时可以考虑是否右界是否和下一位置重复，去除重复解<br>    4.3 若和小于 0，说明 nums[L]太小，L右移，此时可以考虑是否左界和下一位置重复，去除重复解。</p>
+</blockquote>
+<h2 id="18-四数之和"><a href="#18-四数之和" class="headerlink" title="18.四数之和"></a>18.四数之和</h2><p><img src="https://img-blog.csdnimg.cn/20210511150555549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p>
+<pre><code class="java">    List&lt;List&lt;Integer&gt;&gt; res=new ArrayList&lt;&gt;();
+    int len=nums.length;
+    if(nums==null||len&lt;4) {//首先进行长度判断
+        return res;  //统一返回的数据结构
+    }
+    Arrays.sort(nums);//排序
+    for(int i=0;i&lt;len-3;i++) { //i指向第一个数字，所以i&lt;len-3即可
+        if(nums[i]+nums[len-3]+nums[len-2]+nums[len-1]&lt;target) {//因为已经排序，说明本次循环最大结果也是小于target，所以直接进入下一次循环
+            continue;
+        }
+        if(nums[i]+nums[i+1]+nums[i+2]+nums[i+3]&gt;target) {//因为已经排序，说明此时的i包括之后的i和剩余的三个数字相加肯定大于target了，直接跳出整个循环
+            break;
+        }
+        // 错误去重方法，将会漏掉-1,-1,2 这种情况，错误的原因是i在最外层，里面还有指向其他三个数的指针。不能只考虑i
+        /*
+        if (nums[i] == nums[i + 1]) {
+            continue;
+        }
+        */
+        //正确去重指向第一个数的i指针的方法
+        if(i&gt;0&amp;&amp;nums[i]==nums[i-1]) {
+            continue;
+        }
+        for(int j=i+1;j&lt;len-2;j++) {//j指针指向第二个数字，应小于len-2；
+
+            if(nums[i]+nums[j]+nums[len-1]+nums[len-2]&lt;target) {//同i指针的去重思路
+                continue;
+            }
+            if(nums[i]+nums[j]+nums[j+1]+nums[j+2]&gt;target) {//同i指针的去重思路
+                break;
+            }
+            if(j&gt;i+1&amp;&amp;nums[j]==nums[j-1]){//注意，这里不再是i&gt;0，而应该是j&gt;i+1；其余同i指针的去重思路
+                continue;
+            }
+            int left=j+1;//定义指向第三个数的left指针
+            int right=len-1;//定义指向第四个数的right指针，从数组末开始
+            while(left&lt;right) {//以下的思路和三数之和基本一致，不再赘述
+                int count=nums[i]+nums[j]+nums[left]+nums[right];
+                if(count&lt;target) {
+                    left++;
+                }
+                else if(count&gt;target) {
+                    right--;
+                }
+                else {
+                    res.add(Arrays.asList(nums[i],nums[j],nums[left],nums[right]));
+                    while(left&lt;right&amp;&amp;nums[left]==nums[left+1]){
+                        left++;
+                        //continue;
+                    }
+                    while(left&lt;right&amp;&amp;nums[right]==nums[right-1]) {
+                        right--;
+                        //continue;
+                    }
+                    left++;
+                    right--;
+                }
+            }    
+        }    
+    }
+    return res;    
+}</code></pre>
+<h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><blockquote>
+<p>本题主要思路就是在三数之和的基础上再套一个循环就可以了，设置四个指针，指向四个数字，然后再注意一下去重方面。</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%93%88%E5%B8%8C/">哈希</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <script defer src="https://utteranc.es/client.js"
+          repo="qinhuaian/commit-utterance"
+          issue-term="title"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+  >
+  </script>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "某数之和集锦&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+</body>
+</html>

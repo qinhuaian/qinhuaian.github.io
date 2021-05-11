@@ -143,6 +143,104 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/11/%E5%93%88%E5%B8%8C%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%BF%E7%94%A8/">
+        <p class="h4 index-header">哈希之基本数据结构使用</p>
+      </a>
+
+      <a href="/2021/05/11/%E5%93%88%E5%B8%8C%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%BF%E7%94%A8/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">242.有效的字母异位词普通版
+public boolean isanagram(String s,String t) {
+
+          if(s.length()!=t.length()) {
+                 return false;
+             }
+             int[] arr=new int[26];
+             for(int i=0;i&lt;s.length();i++) {
+                 arr[s.charAt(i)-&#39;a&#39;]++;
+                   </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-11&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%93%88%E5%B8%8C/">哈希</a>&nbsp;
+          
+            <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/">快慢指针</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/11/%E6%9F%90%E6%95%B0%E4%B9%8B%E5%92%8C%E9%9B%86%E9%94%A6/">
+        <p class="h4 index-header">某数之和集锦</p>
+      </a>
+
+      <a href="/2021/05/11/%E6%9F%90%E6%95%B0%E4%B9%8B%E5%92%8C%E9%9B%86%E9%94%A6/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.两数之和
+public int[] calsum1(int[] nums,int tar) {
+
+    HashMap&lt;Integer,Integer&gt;map1=new HashMap&lt;&gt;();
+    for(int i=0;i&lt;nums.length;i++) {
+        if(map1.containsKey(tar-nums[i])) {
+            int[] ans=new int[] {map1.get(tar-nums[i]),i};
+            return ans;
+        }
+        ma</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-11&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
+          
+            <a href="/tags/%E5%93%88%E5%B8%8C/">哈希</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/05/09/%E5%93%88%E5%B8%8C%E6%B3%95%E7%B3%BB%E5%88%971/">
         <p class="h4 index-header">哈希法系列1</p>
       </a>
@@ -519,102 +617,6 @@ function recursion(大规模){
             <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>&nbsp;
           
             <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
-        <p class="h4 index-header">数组之滑动窗口</p>
-      </a>
-
-      <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">滑动窗口模版
-初始化慢指针 = 0
-初始化 ans
-for 快指针 in 可迭代集合
-   更新窗口内信息(通常是快指针逐增，也就是对右边界进行操作)
-   while 窗口内不符合题意
-      扩展或者收缩窗口（通常是对左边界进行操作）
-      慢指针移动
-   更新答案
-返回 ans
-看到题目想到要用滑动窗口法，关键词就在于“连续”，最后所求的大概率是一段连续子序列，同时不改变数组原来的位置。滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)的暴力解法降为O(n)。
-209.长度最小的子数组
-思路简述题目中要求找出长度最小的连续子数组，那</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-04&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/leetcode/">leetcode</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>&nbsp;
-          
-            <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
-        <p class="h4 index-header">数组之双指针</p>
-      </a>
-
-      <a href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">27.移除元素
-思路简述这个题有两种方法，第一种是暴力，另一种是双指针法。而且需要注意的是不能使用额外的数组空间。但这两种方法的本质相同，都是将不等于val的数移到数组左部，或者说，将等于val和不等于val的两部分进行分离。暴力法的核心算法是每当遇到一个等于val的数nums[i]时，就将下标i之后的所有数都向前移一位，移完后将数组nums的size减1。最后返回size；
-public static int removeelement(int[] nums,int val) {
-          int size=nums.length;
-          for(int i=0;i&</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-03&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/leetcode/">leetcode</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
-          
-            <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>&nbsp;
           
         
       </div>

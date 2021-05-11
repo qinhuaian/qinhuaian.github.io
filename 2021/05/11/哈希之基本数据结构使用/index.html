@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/default.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="常怀牧">
+  <meta name="keywords" content="">
+  <title>哈希之基本数据结构使用 - 太阳照常升起</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>太阳照常升起</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/taiyang.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期二, 五月 11日 2021, 3:20 下午
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    1.1k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      4 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h2 id="242-有效的字母异位词"><a href="#242-有效的字母异位词" class="headerlink" title="242.有效的字母异位词"></a>242.有效的字母异位词</h2><p><img src="https://img-blog.csdnimg.cn/20210511151007538.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><strong>普通版</strong></p>
+<pre><code class="java">public boolean isanagram(String s,String t) {
+
+          if(s.length()!=t.length()) {
+                 return false;
+             }
+             int[] arr=new int[26];
+             for(int i=0;i&lt;s.length();i++) {
+                 arr[s.charAt(i)-&#39;a&#39;]++;
+                             arr[t.charAt(i)-&#39;a&#39;]--;
+             }
+
+             for(int i=0;i&lt;26;i++) {
+                 if(arr[i]!=0)
+                 return false;
+             }
+             return true;    
+     }</code></pre>
+<p><strong>进阶版</strong></p>
+<pre><code class="java">    if(s.length()!=t.length()) {
+             return false;
+         }
+         Map&lt;Character,Integer&gt; table=new HashMap&lt;Character,Integer&gt;();
+         for(int i=0;i&lt;s.length();i++) {
+             char ch=s.charAt(i);
+             table.put(ch, table.getOrDefault(ch,0)+1);
+         }
+         for(int i=0;i&lt;t.length();i++) {
+             char ch=t.charAt(i);
+             table.put(ch, table.getOrDefault(ch, 0)-1);
+             if(table.get(ch)&lt;0) {
+                 return false;
+             }
+         }
+         return true；
+}</code></pre>
+<h2 id="思路简述"><a href="#思路简述" class="headerlink" title="思路简述"></a>思路简述</h2><blockquote>
+<p>这个题其实就是看两个字符串所包含字母是否相同，关键就是利用哈希表的思想来解答，设置一个长度为26的数组当作哈希表。每一个下标存储的内容代表对应字母出现次数。然后判断遍历完两个字符串之后，会不会有存储的内容不为0，如果有，则返回false；<br>进阶版的问如果含有unicode怎么办，解决办法就是用map进行存储。</p>
+</blockquote>
+<h2 id="383-赎金信（上面题的轻微变异）"><a href="#383-赎金信（上面题的轻微变异）" class="headerlink" title="383.赎金信（上面题的轻微变异）"></a>383.赎金信（上面题的轻微变异）</h2><p><img src="https://img-blog.csdnimg.cn/20210511151137879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p>
+<pre><code class="java">public boolean canconstruct(String r,String m) {//r为ransomNote,m为magazine
+    int[] ans=new int[26];//数组哈希映射
+    for(int i=0;i&lt;m.length();i++) {//注意，要先对m进行判断
+        ans[m.charAt(i)-&#39;a&#39;]++;
+    }
+    for(int j=0;j&lt;r.length();j++) {
+        ans[r.charAt(j)-&#39;a&#39;]--;
+        if(ans[r.charAt(j)-&#39;a&#39;]&lt;0) {
+            return false;
+        }
+    }
+    return true;
+}</code></pre>
+<h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><blockquote>
+<p>1.设立26位字母映射哈希数组。<br>2.先对m进行遍历，其包含的字母对应加一。<br>3.然后对r进行遍历，其包含的字母对应减一。<br>4.判断哈希数组是否有值小于0，如果有则返回false。 注意：需要先对m进行判断，因为m包含的数据更多，如果符合条件，m一定含有r，而r不一定含有m。如果先判断r，那么m中有而r中没有的字符也会被判断错误。</p>
+</blockquote>
+<h2 id="202-快乐数"><a href="#202-快乐数" class="headerlink" title="202.快乐数"></a>202.快乐数</h2><p><img src="https://img-blog.csdnimg.cn/20210511151248413.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p>
+<h2 id="1-哈希法"><a href="#1-哈希法" class="headerlink" title="1.哈希法"></a>1.哈希法</h2><pre><code class="java">public int getInt(int num){
+    int sum=0;
+    int ans;
+    while(num&gt;0) {
+        ans=num%10;
+        num/=10;
+        sum+=ans*ans;
+    }
+    return sum;    
+}
+public boolean isHappy1(int num) {
+    Set&lt;Integer&gt; table=new HashSet&lt;&gt;();
+    while(num!=1&amp;&amp;!table.contains(num)) {//数字既不等于1，而且又没有出现过
+        if(!table.contains(num)) {
+            table.add(num);
+        }
+        num=getInt(num);
+    }
+    return num==1;
+}</code></pre>
+<h2 id="思路简述-1"><a href="#思路简述-1" class="headerlink" title="思路简述"></a>思路简述</h2><blockquote>
+<p>分析题目可知，数字要么最后到达1，要么一直困在一个循环里。所以实质上是判断会不会出现循环。哈希法的关键就在于设立一个set来进行判断，看看数字是否已经出现过，如果出现过，那么就注定出现循环了。</p>
+</blockquote>
+<h2 id="2-快慢指针法"><a href="#2-快慢指针法" class="headerlink" title="2.快慢指针法"></a>2.快慢指针法</h2><pre><code class="java">public int getInt(int num){
+    int sum=0;
+    int ans;
+    while(num&gt;0) {
+        ans=num%10;
+        num/=10;
+        sum+=ans*ans;
+    }
+    return sum;    
+}
+public boolean isHappy(int num){
+    int fast=getInt(num);
+    int slow=num;
+    while(fast!=1&amp;&amp;fast!=slow) {
+        slow=getInt(slow);
+        fast=getInt(getInt(fast));//注意fast指针设置两倍速的方式
+    }
+    return fast==1;
+}</code></pre>
+<h2 id="思路简述-2"><a href="#思路简述-2" class="headerlink" title="思路简述"></a>思路简述</h2><blockquote>
+<p>本题实际上是对是否会有循环的判断，也就是对是否会出现环的一个判断，那么就可以想起来用快慢指针方法进行判断的思路，如果出现环，那么快慢指针就会相遇。按照这个基本思路进行求解</p>
+</blockquote>
+<h2 id="349-两个数组的交集"><a href="#349-两个数组的交集" class="headerlink" title="349.两个数组的交集"></a>349.两个数组的交集</h2><p><img src="https://img-blog.csdnimg.cn/20210511151420615.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p>
+<pre><code class="java">public int[] interSection(int[] nums1,int[] nums2) {
+
+    Set&lt;Integer&gt; set1=new HashSet&lt;Integer&gt;();
+    Set&lt;Integer&gt; set2=new HashSet&lt;Integer&gt;();
+    for(int i:nums1) {
+        set1.add(i);
+    }
+    for(int i:nums2) {
+        if(set1.contains(i)) {//将nums1和nums2都有的元素保存在set2
+            set2.add(i);
+        }
+    }
+    int[] ans=new int[set2.size()];
+    int count=0;
+    for(int i:set2) {//将set移到数组里
+        ans[count++]=i;
+    }
+    return ans;    
+}</code></pre>
+<h2 id="思路简述-3"><a href="#思路简述-3" class="headerlink" title="思路简述"></a>思路简述</h2><blockquote>
+<p>这道题比较简单，就是找两个数组相同的值并存储。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，当我们<strong>遇到了要快速判断一个元素是否出现集合里的时候，就要考虑哈希法</strong>。<br>但是哈希法也是牺牲了空间换取了时间，因为我们要使用额外的数组，set或者是map来存放数据，才能实现快速的查找。<br>如果在做面试题目的时候遇到<strong>需要判断一个元素是否出现过的场景也应该第一时间想到哈希法</strong>！</p>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%93%88%E5%B8%8C/">哈希</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/">快慢指针</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <script defer src="https://utteranc.es/client.js"
+          repo="qinhuaian/commit-utterance"
+          issue-term="title"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+  >
+  </script>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "哈希之基本数据结构使用&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -143,6 +143,102 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+        <p class="h4 index-header">数组之滑动窗口</p>
+      </a>
+
+      <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">滑动窗口模版
+初始化慢指针 = 0
+初始化 ans
+for 快指针 in 可迭代集合
+   更新窗口内信息(通常是快指针逐增，也就是对右边界进行操作)
+   while 窗口内不符合题意
+      扩展或者收缩窗口（通常是对左边界进行操作）
+      慢指针移动
+   更新答案
+返回 ans
+看到题目想到要用滑动窗口法，关键词就在于“连续”，最后所求的大概率是一段连续子序列，同时不改变数组原来的位置。滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)的暴力解法降为O(n)。
+209.长度最小的子数组
+思路简述题目中要求找出长度最小的连续子数组，那</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>&nbsp;
+          
+            <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
+        <p class="h4 index-header">数组之双指针</p>
+      </a>
+
+      <a href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">27.移除元素
+思路简述这个题有两种方法，第一种是暴力，另一种是双指针法。而且需要注意的是不能使用额外的数组空间。但这两种方法的本质相同，都是将不等于val的数移到数组左部，或者说，将等于val和不等于val的两部分进行分离。暴力法的核心算法是每当遇到一个等于val的数nums[i]时，就将下标i之后的所有数都向前移一位，移完后将数组nums的size减1。最后返回size；
+public static int removeelement(int[] nums,int val) {
+          int size=nums.length;
+          for(int i=0;i&</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/04/27/%E6%95%B0%E7%BB%84%E7%AE%80%E5%8D%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
         <p class="h4 index-header">数组简单刷题记录</p>
       </a>
@@ -435,84 +531,6 @@
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%8B%86%E5%BC%B9/">拆弹</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/20/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%20-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">第二阶段 -第一次记录</p>
-      </a>
-
-      <a href="/2020/03/20/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%20-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">装了一天的linux虚拟机，疲于修改各种奇奇怪怪的小bug。现在就有两个感悟：1.删除重装大法好，菜鸡必备。2.你永远不知道之前嫌弃占空间删掉的软件什么时候会再下回来，能留着就留着吧，重新下怪麻烦的。简单说下安装过程吧，我用的virtualbox+ubuntu（用vb其实是因为穷，免费使用它不香吗？)具体安装过程可见：虚拟机安装过程设置共享文件夹可能会有点问题，自动挂载行不通的话还是莫要强求了，直接用手动挂载吧。具体方法可见共享文件夹的几种设置方法全都装完后想执行一下bomb，结果？？？一直提醒我没有那个文件或目录。整了好久才知道是因为我的ubuntu是64位的，没有32位的运行库。在终端安装</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-20&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/">二进制安全</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%8B%86%E5%BC%B9/">拆弹</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/19/%E7%AC%AC%E5%85%AB%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">第八次记录</p>
-      </a>
-
-      <a href="/2020/03/19/%E7%AC%AC%E5%85%AB%E6%AC%A1%E8%AE%B0%E5%BD%95/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目考查点1.php文件包含漏洞2.使用php://filter绕过限制
-涉及知识点1.php文件包含漏洞指服务器通过php的特性去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，导致执行了非预期的代码，从而产生安全漏洞。文件包含漏洞的一般特征如下：?page=a.php?home=a.html?file=content具体可见：php文件包含漏洞文件包含漏洞的几种利用方法文件包含漏洞详解2.使用php封装协议读取文件，一般可以使用两种方式：
-?page=php://filter/read=convert.base64-encode/resource=index.</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/">二进制安全</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/pwn/">pwn</a>&nbsp;
           
         
       </div>
