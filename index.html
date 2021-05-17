@@ -143,6 +143,47 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/17/cve-2019-18634%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">cve-2019-18634记录</p>
+      </a>
+
+      <a href="/2021/05/17/cve-2019-18634%E8%AE%B0%E5%BD%95/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一、 环境配置ubuntu 18.04 virtualbox虚拟机sudo 1.8.25 版本
+二、漏洞概述CVE-2019-18634是一个sudo 提权漏洞，影响sudo版本为[1.7.1,1.8.31)。具体地，如果pwfeedback配置选项在/etc/sudoers被启用，攻击者可以利用一个bss段溢出漏洞来获取root权限。 pwfeedback配置选项在多数的Linux系统中都不是默认选项，但是在Linux Mint操作系统和Elementary OS上是默认开启的，因此漏洞的危害比较大，攻击者需要向getln传递一个超长字符串来触发攻击。
+三、漏洞点代码
+四、漏洞分析如果不是在</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/">二进制安全</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/cve/">cve</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/05/11/%E5%93%88%E5%B8%8C%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%BF%E7%94%A8/">
         <p class="h4 index-header">哈希之基本数据结构使用</p>
       </a>
@@ -568,53 +609,6 @@ function recursion(大规模){
         
         
           <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2021/05/04/%E9%93%BE%E8%A1%A8%E4%B9%8B%E9%80%92%E5%BD%92/">
-        <p class="h4 index-header">链表之递归</p>
-      </a>
-
-      <a href="/2021/05/04/%E9%93%BE%E8%A1%A8%E4%B9%8B%E9%80%92%E5%BD%92/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">206.反转链表主要有两种解法，双指针迭代和递归方法
-1.双指针迭代法public ListNode reverseList(ListNode head) {
-             ListNode pre=null;
-             ListNode cur=head;//cur一开始赋值为头节点
-             ListNode tmp=null;//该变量负责保存cur的下一个节点，起暂存储功能
-             while(cur!=null) {
-                 tmp=cur.next;
-                 cur.n</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-04&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/leetcode/">leetcode</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>&nbsp;
           
             <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>&nbsp;
           

@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>cve-2019-18634记录</title>
+    <link href="/2021/05/17/cve-2019-18634%E8%AE%B0%E5%BD%95/"/>
+    <url>/2021/05/17/cve-2019-18634%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、-环境配置"><a href="#一、-环境配置" class="headerlink" title="一、 环境配置"></a>一、 环境配置</h2><p>ubuntu 18.04 virtualbox虚拟机<br>sudo 1.8.25 版本</p><h2 id="二、漏洞概述"><a href="#二、漏洞概述" class="headerlink" title="二、漏洞概述"></a>二、漏洞概述</h2><p>CVE-2019-18634是一个sudo 提权漏洞，影响sudo版本为[1.7.1,1.8.31)。<br>具体地，如果pwfeedback配置选项在/etc/sudoers被启用，攻击者可以利用一个bss段溢出漏洞来获取root权限。 pwfeedback配置选项在多数的Linux系统中都不是默认选项，但是在Linux Mint操作系统和Elementary OS上是默认开启的，因此漏洞的危害比较大，攻击者需要向getln传递一个超长字符串来触发攻击。</p><h2 id="三、漏洞点代码"><a href="#三、漏洞点代码" class="headerlink" title="三、漏洞点代码"></a>三、漏洞点代码</h2><p><img src="https://img-blog.csdnimg.cn/20210517204012124.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br><img src="https://img-blog.csdnimg.cn/20210517204101744.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p><h2 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h2><p><strong>如果不是在终端而是从管道里获取输入流</strong>，这里的sudo_term_kill也就是term.c_cc[VKILL] 会保持初始化的值\x00, 所以传入\x00的时候会进入第一个判断。<br>但由于管道是单向管道，往管道写”b b”会失败然后break出while循环，问题也就是出现在这里，跳出while (cp &gt; buf)这个循环之后，<strong>cp指向的位置没有改变，但是可以读取的最大字符数left重置为bufsiz.</strong><br> 所以只要不断传入类似”xxx…\x00”的字符串，就可以不断向 buf里写东西，造成buf溢出。</p><h2 id="五、POC1（sudo-1-8-16以下版本）"><a href="#五、POC1（sudo-1-8-16以下版本）" class="headerlink" title="五、POC1（sudo 1.8.16以下版本）"></a>五、POC1（sudo 1.8.16以下版本）</h2><p><img src="https://img-blog.csdnimg.cn/20210517204305139.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""></p><h2 id="六、PATCH1"><a href="#六、PATCH1" class="headerlink" title="六、PATCH1"></a>六、PATCH1</h2><p><img src="https://img-blog.csdnimg.cn/20210517204325255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>patch1解决了利用sudo_term_eof等termios控制参数因为不是从终端设备读入输入流而未初始化产生的漏洞。</p><h2 id="七、POC2（sudo-1-8-16-1-8-31版本）"><a href="#七、POC2（sudo-1-8-16-1-8-31版本）" class="headerlink" title="七、POC2（sudo 1.8.16-1.8.31版本）"></a>七、POC2（sudo 1.8.16-1.8.31版本）</h2><pre><code class="bash">socat pty,link=/tmp/pty,waitslave exec:&quot;perl -e &#39;print((\&quot;A\&quot; x 100 . chr(0x15)) x 50)&#39;” &amp;sudo -S id &lt; /tmp/pty</code></pre><p>patch1解决的只是sudo_term_kill等参数未被初始化的情况，但如果从终端设备获取输入流，那么sudo_term_kill会被设为0x15。此时只需对poc1稍作改动，用伪终端传递数据，并将某些c设置为0x15，就可以再次利用<code>c==sudo_term_kill</code>的判断条件。</p><h2 id="八、PATCH2"><a href="#八、PATCH2" class="headerlink" title="八、PATCH2"></a>八、PATCH2</h2><p><img src="https://img-blog.csdnimg.cn/20210517204659469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW9xaW5nc2hhbg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt=""><br>在<code>c==sudo_term_eof</code>的判断最后，将cp又重新指向buf起始点，这样又可以通过bufsiz控制循环了，本次<code>c==sudo_term_kill</code>判断，作用就只是被限定为重置本次密码读取。从根本上解决了cp指针在不受控的bufsiz下产生的问题。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>二进制安全</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>cve</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>哈希之基本数据结构使用</title>
     <link href="/2021/05/11/%E5%93%88%E5%B8%8C%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%BF%E7%94%A8/"/>
     <url>/2021/05/11/%E5%93%88%E5%B8%8C%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%BF%E7%94%A8/</url>
