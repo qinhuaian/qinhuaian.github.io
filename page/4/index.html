@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="常怀牧">
   <meta name="keywords" content="">
-  <title>归档 - 太阳照常升起</title>
+  <title>太阳照常升起</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -118,6 +118,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -127,43 +131,58 @@
     
       <div class="container nopadding-md">
         <div class="py-5 z-depth-3" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 31 篇文章</p>
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2021</p>
     
-    <a href="/2021/05/04/%E9%93%BE%E8%A1%A8%E4%B9%8B%E9%80%92%E5%BD%92/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">链表之递归</span>
-      <span style="float: right;">05-04</span>
-    </a>
-  
-    
-    <a href="/2021/05/04/%E6%95%B0%E7%BB%84%E4%B9%8B%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数组之滑动窗口</span>
-      <span style="float: right;">05-04</span>
-    </a>
-  
-    
-    <a href="/2021/05/03/%E6%95%B0%E7%BB%84%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数组之双指针</span>
-      <span style="float: right;">05-03</span>
-    </a>
-  
-</div>
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2020/03/11/%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">第一次记录</p>
+      </a>
+
+      <a href="/2020/03/11/%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%B0%E5%BD%95/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">@TOC
+第一次记录最简单的白给题-simple HTTP method，测试的get和post的用法。第一个是关于get的题目，就我而言第一眼看到是懵逼的，以前完全没接触过这种骨骼清奇的题目。看了看网页的源代码，意识到这可能和get变量用法有关，只要想办法把key值设置成areyousure应该就行了。于是就去查相关用法。查了之后发现get传输的变量直接显示在URL之中，所以直接在网址后面加上？key=areyousure就可以了。?代表URL的结尾与请求参数的开始。另一个是关于Post的题目，但是用post方法的表单发送的信息，对任何人都是不可见的，自然也不会直接显示在URL中。害，这可咋</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-11&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/">二进制安全</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/pwn/">pwn</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/2021/05/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/archives/2021/05/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
     </span>
   </nav>
   
@@ -270,7 +289,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "何妨吟啸且徐行&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
