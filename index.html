@@ -143,6 +143,53 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/06/18/%E9%98%9F%E5%88%97%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">队列简单总结</p>
+      </a>
+
+      <a href="/2021/06/18/%E9%98%9F%E5%88%97%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">239. 滑动窗口最大值
+public class MyQueue{  //构建自己的队列及相关方法，add，poll，peek
+     Deque&lt;Integer&gt; deque=new LinkedList&lt;&gt;();
+     void add(int val) {
+         while(!deque.isEmpty()&amp;&amp;val&gt;deque.getLast()) {//保证队列按照从大到小的顺序，
+             deque.removeLast();
+         }
+         deque.add(val);/</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-06-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%98%9F%E5%88%97/">队列</a>&nbsp;
+          
+            <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">单调队列</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/06/18/%E6%A0%88%E6%80%BB%E7%BB%93/">
         <p class="h4 index-header">栈总结</p>
       </a>
@@ -154,6 +201,8 @@
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">20.有效的括号
+一言以概之，由于栈结构的特殊性，非常适合用来做匹配、对称类问题。
+
 public boolean isValid(String s) {
 
     Deque&lt;Character&gt; deque=new LinkedList&lt;&gt;();
@@ -164,8 +213,7 @@ public boolean isValid(String s) {
         if(ch==&#39;{&#39;) {
             deque.push(&#39;}&#39;);
             }
-        else if(ch==&#39;(&#39;) {
-          </div>
+        els</div>
         </div>
       </a>
 
@@ -174,6 +222,16 @@ public boolean isValid(String s) {
           <i class="iconfont icon-riqi2"></i>&nbsp;2021-06-18&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%88/">栈</a>&nbsp;
+          
         
       </div>
     </div>
@@ -554,56 +612,6 @@ public ListNode detectCycle(ListNode head) {
             <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>&nbsp;
           
             <a href="/tags/%E6%A0%88/">栈</a>&nbsp;
-          
-            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
-        <p class="h4 index-header">链表之双指针</p>
-      </a>
-
-      <a href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">下面两道题本质上都是链表求交点问题，有环的链表就用快慢指针（龟兔赛跑思想）来解决，无环的链表则思考如何达成长度相同的路径的目标。
-141.环形链表
-public boolean hascycle(ListNode head) {
-    if(head==null||head.next==null) {
-        return false;
-    }
-    ListNode fast=head.next;
-    ListNode slow=head;
-    while(slow!=fast) {
-        if(fast==null||fast.next==null)
-  </div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-06&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/leetcode/">leetcode</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>&nbsp;
           
             <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
           

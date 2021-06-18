@@ -143,6 +143,56 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
+        <p class="h4 index-header">链表之双指针</p>
+      </a>
+
+      <a href="/2021/05/06/%E9%93%BE%E8%A1%A8%E4%B9%8B%E5%8F%8C%E6%8C%87%E9%92%88/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">下面两道题本质上都是链表求交点问题，有环的链表就用快慢指针（龟兔赛跑思想）来解决，无环的链表则思考如何达成长度相同的路径的目标。
+141.环形链表
+public boolean hascycle(ListNode head) {
+    if(head==null||head.next==null) {
+        return false;
+    }
+    ListNode fast=head.next;
+    ListNode slow=head;
+    while(slow!=fast) {
+        if(fast==null||fast.next==null)
+  </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-05-06&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>&nbsp;
+          
+            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2021/05/06/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%AE%80%E8%A6%81%E6%A6%82%E8%BF%B0/">
         <p class="h4 index-header">递归算法简要概述</p>
       </a>
@@ -511,39 +561,6 @@ public static int removeelement(int[] nums,int val) {
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-05&nbsp;&nbsp;
         
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-        <p class="h4 index-header">MIT6.828 环境搭建</p>
-      </a>
-
-      <a href="/2020/03/27/MIT6.828%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">总的来说，需要构建x86仿真器QEMU和一个编译器工具链。具体步骤如下：1.安装linux虚拟机，如果是64位计算机的话先安装32位支持库，输入：sudo apt-get install gcc-multilib2.在终端测试工具链是否可行，首先输入Objdump -i，输出第二行应为elf32-i386。然后输入gcc -m32 -print-libgcc-file-name,如果两个命令都成功，就说明无需再编译工具链，具体如下图所示：)3.下载qemu前，首先安装libsdl1.2-dev，libtool-bin，libglib2.0-dev，libz-dev和libpixman-1-de</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/MIT6-828/">MIT6.828</a>&nbsp;
-          &nbsp;
         
         
       </div>
